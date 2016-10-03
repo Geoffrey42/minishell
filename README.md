@@ -6,13 +6,13 @@ Quelques builtins basiques devront egalement etre inclus.
 
 Objectifs :
 
-Exécution d'une commande dans un nouveau processus
-Parsing basique
-Gestion de l'environnement
-Gestion du PATH
+Exécution d'une commande dans un nouveau processus.
+Parsing basique.
+Gestion de l'environnement.
+Gestion du PATH.
 
 Skills :
 
-Imperative programming
-Rigor
-Unix
+Imperative programming.
+Rigor.
+Unix.
