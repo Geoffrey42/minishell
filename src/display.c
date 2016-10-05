@@ -1,42 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/12 20:09:43 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/05 20:24:38 by ggane            ###   ########.fr       */
+/*   Created: 2016/10/05 19:03:58 by ggane             #+#    #+#             */
+/*   Updated: 2016/10/05 20:04:07 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../inc/minishell.h"
 
-char	*ft_strstr(const char *big, const char *little)
+int		display_str(char *var, int i)
+{
+	ft_putstr("environ[");
+	ft_putnbr(i);
+	ft_putstr("] : [");
+	ft_putstr(var);
+	ft_putendl("]");
+	return (i);
+}
+
+int		print_env(char **env)
 {
 	int		i;
-	int		j;
-	char	*pt;
 
 	i = 0;
-	pt = 0;
-	if (little[i] == '\0')
-		return ((char *)big);
-	while (big[i] != '\0')
+	while (env[i])
 	{
-		if (big[i] == little[0])
-		{
-			pt = (char *)big + i;
-			j = 0;
-			while (big[i + j] == little[j])
-			{
-				if (little[j + 1] == '\0')
-					return (pt);
-				j++;
-			}
-			pt = 0;
-		}
+		i = display_str(env[i], i);
 		i++;
 	}
-	return (0);
+	return (i);
+}
+
+void	display_prompt(void)
+{
+	write(1, "$> ", 3);
 }

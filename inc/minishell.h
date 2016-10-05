@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:09:20 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/05 17:48:49 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/05 20:03:43 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,34 @@
 # include <unistd.h>
 # include "libft.h"
 
+extern char	**environ;
+
+/*
+**path.c
+*/
+
+char		*read_path(char *program);
+
 /*
 **runner.c
 */
 
-int		execute_commands(char **words);
-void	looping_runner(void);
+int			extern_commands_launcher(char **words);
+int			execute_commands(char **words);
+void		looping_runner(void);
 
 /*
 **display.c
 */
 
-void	display_prompt(void);
+int			display_str(char *var, int i);
+int			print_env(char **env);
+void		display_prompt(void);
 
 /*
 **delete.c
 */
 
-void	erase_variables(char **words, char *line);
+void		erase_variables(char **words, char *line);
 
 #endif

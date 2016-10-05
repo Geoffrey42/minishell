@@ -6,11 +6,11 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 17:02:30 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/05 17:33:29 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/05 20:01:38 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../inc/minishell.h"
 
 int		extern_commands_launcher(char **words)
 {
@@ -19,14 +19,15 @@ int		extern_commands_launcher(char **words)
 
 	if ((pid = fork()) == 0)
 	{
-		if (execve(read_path(words[0], words,)))
+		if (execve(read_path(words[0]), words, copy_array_str(environ)))
+			return (0);
 	}
 	return (1);
 }
 
 int		execute_commands(char **words)
 {
-	return (0);
+	return (extern_commands_launcher(words));
 }
 
 void	looping_runner(void)

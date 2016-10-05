@@ -6,12 +6,16 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2016/10/03 13:43:05 by ggane            ###   ########.fr        #
+#    Updated: 2016/10/05 19:42:55 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= minishell
-SRC= 
+SRC= src/delete.c \
+	 src/display.c \
+	 src/main.c \
+	 src/path.c \
+	 src/runner.c 
 CC= clang
 CFLAGS= -Wall -Werror -Wextra
 INC= inc/
