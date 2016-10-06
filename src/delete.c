@@ -6,11 +6,11 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 17:03:26 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/05 20:02:31 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/06 11:07:47 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minishell.h"
+#include "minishell.h"
 
 void	erase_variables(char **words, char *line)
 {

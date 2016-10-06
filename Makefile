@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2016/10/05 19:42:55 by ggane            ###   ########.fr        #
+#    Updated: 2016/10/06 11:05:14 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC= src/delete.c \
 	 src/runner.c 
 CC= clang
 CFLAGS= -Wall -Werror -Wextra
-INC= inc/
+INC= inc
 OBJ= $(SRC:.c=.o)
 
 all: $(NAME)
@@ -28,7 +28,7 @@ $(NAME): $(OBJ)
 		$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -L libft/ -lft
 
 %.o: %.c
-		$(CC) $(CFLAGS) $< -c -o $@
+		$(CC) $(CFLAGS) -I $(INC) $< -c -o $@
 
 clean:
 		make -C libft/ clean

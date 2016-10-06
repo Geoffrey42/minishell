@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:09:20 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/06 10:10:13 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/06 13:34:44 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include <unistd.h>
 # include <dirent.h>
+# include <sys/wait.h>
 
 extern char	**environ;
 
@@ -23,12 +24,15 @@ extern char	**environ;
 **path.c
 */
 
-char		*search_command(char *program);
+int		command_is_find(char *command, char *dir);
+char	*get_command(char *command, char **directories);
+char	*get_path(char **environ);
 
 /*
 **runner.c
 */
 
+int			fork_process(char *file, char **words);
 int			extern_commands_launcher(char **words);
 int			execute_commands(char **words);
 void		looping_runner(void);

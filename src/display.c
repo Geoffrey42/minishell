@@ -6,11 +6,11 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 19:03:58 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/06 10:12:36 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/06 11:19:10 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minishell.h"
+#include "minishell.h"
 
 int		display_str(char *var, int i, char *name)
 {
