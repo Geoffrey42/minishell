@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   path.c                                             :+:      :+:    :+:   */
+/*   create_pathname.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/05 19:09:45 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/06 08:50:19 by ggane            ###   ########.fr       */
+/*   Created: 2016/10/06 09:43:01 by ggane             #+#    #+#             */
+/*   Updated: 2016/10/06 10:16:42 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minishell.h"
+#include "libft.h"
 
-char	*search_command(char *program)
+char	*create_pathname(char *daddy, char *son)
 {
-	return (NULL);
+	daddy = ft_strjoin(daddy, "/");
+	son = ft_strjoin(daddy, son);
+	return (son);
 }

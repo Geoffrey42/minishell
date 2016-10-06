@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 10:45:03 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/05 18:59:53 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/06 09:59:05 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,5 +126,6 @@ void				ft_putnbr_base(int nbr, char *base);
 char				*ft_itoa_base(int value, int base);
 int					get_next_line(const int fd, char **line);
 char				**copy_array_str(char **origin);
+char				*create_pathname(char *daddy, char *son);
 
 #endif

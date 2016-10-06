@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 17:02:30 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/05 20:01:38 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/06 08:50:06 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		extern_commands_launcher(char **words)
 
 	if ((pid = fork()) == 0)
 	{
-		if (execve(read_path(words[0]), words, copy_array_str(environ)))
+		if (execve(search_command(words[0]), words, copy_array_str(environ)))
 			return (0);
 	}
 	return (1);

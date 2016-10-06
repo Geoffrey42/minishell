@@ -6,15 +6,16 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 19:03:58 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/05 20:04:07 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/06 10:12:36 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-int		display_str(char *var, int i)
+int		display_str(char *var, int i, char *name)
 {
-	ft_putstr("environ[");
+	ft_putstr(name);
+	ft_putchar('[');
 	ft_putnbr(i);
 	ft_putstr("] : [");
 	ft_putstr(var);
@@ -22,16 +23,18 @@ int		display_str(char *var, int i)
 	return (i);
 }
 
-int		print_env(char **env)
+int		print_env(char **env, char *name)
 {
 	int		i;
 
 	i = 0;
+	ft_putendl("-----------------");
 	while (env[i])
 	{
-		i = display_str(env[i], i);
+		i = display_str(env[i], i, name);
 		i++;
 	}
+	ft_putendl("-----------------");
 	return (i);
 }
 
