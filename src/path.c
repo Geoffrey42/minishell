@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 19:09:45 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/06 11:08:42 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/07 17:52:07 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,24 @@ int		command_is_find(char *command, char *dir)
 	DIR				*dirp;
 	struct dirent	*content;
 
+	if (command == NULL)
+	{
+		return (1);
+	}
 	if (!(dirp = opendir(dir)))
-		return (0);
+	{
+		return (1);
+	}
 	while ((content = readdir(dirp)))
 	{
 		if (!ft_strcmp(content->d_name, command))
 		{
 			closedir(dirp);
-			return (1);
+			return (0);
 		}
 	}
 	closedir(dirp);
-	return (0);
+	return (1);
 }
 
 char	*get_command(char *command, char **directories)
@@ -38,8 +44,10 @@ char	*get_command(char *command, char **directories)
 	i = 0;
 	while (directories[i])
 	{
-		if (command_is_find(command, directories[i]))
+		if (!command_is_find(command, directories[i]))
+		{
 			return (create_pathname(directories[i], command));
+		}
 		i++;
 	}
 	return (NULL);
