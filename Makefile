@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2016/10/06 11:05:14 by ggane            ###   ########.fr        #
+#    Updated: 2016/10/07 08:46:51 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,12 @@ $(NAME): $(OBJ)
 
 %.o: %.c
 		$(CC) $(CFLAGS) -I $(INC) $< -c -o $@
+swipe:
+		@echo "\033[31mSay bye to all .DS_STORE ;)\033[0m"
+		@find ./ -name ".DS_Store" -depth -exec rm {} \;
+		@echo "\033[31mSay bye to all .swo/swp ;)\033[0m"
+		@find ./ -name "*.swp" -depth -exec rm {} \;
+		@find ./ -name "*.swo" -depth -exec rm {} \;
 
 clean:
 		make -C libft/ clean
