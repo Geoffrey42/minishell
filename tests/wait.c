@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/07 12:19:02 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/07 14:26:07 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/07 16:22:40 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,16 @@ int		main(void)
 {
 	char	*args[] = {"ls", "-l", "/", NULL};
 	int		status;
-	pid_t
+	pid_t	wpid;
 
 	spawn("ls", args);
-	wait(&status);
+	wpid = wait(&status);
+	printf("-------------------------------------------\n");
+	printf("wait() return value is : %d\n", wpid);
 	if (WIFEXITED(status))
 		printf("Child process has terminated normally, it's exit code is : %d\n", WEXITSTATUS(status));
 	else
 		printf("Child process has not terminated normally\n");
+	printf("-------------------------------------------\n");
 	return (0);
 }
