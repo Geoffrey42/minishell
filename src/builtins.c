@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/05 16:08:46 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/10 14:57:55 by ggane            ###   ########.fr       */
+/*   Created: 2016/10/10 15:18:11 by ggane             #+#    #+#             */
+/*   Updated: 2016/10/10 15:38:25 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		main(int ac, char **av, char **env)
+char		**create_builtins_array(void)
 {
-	t_shell		*info;
-
-	ac = 0;
-	av = NULL;
-	if (!(info = ft_memalloc(sizeof(t_shell))))
-		return (1);
-	info->env = copy_array_str(env);
-	looping_shell(info);
-	free(info);
-	return (0);
+	return (ft_strsplit("cd,echo,exit,env,setenv,unsetenv", ','));
 }

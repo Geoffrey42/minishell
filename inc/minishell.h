@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:09:20 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/07 17:03:04 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/10 14:53:19 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 
-extern char	**environ;
+typedef	struct	s_shell
+{
+	char		**env;
+	char		**args;
+}				t_shell;
 
 /*
 **path.c
