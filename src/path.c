@@ -6,20 +6,22 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 19:09:45 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/10 15:53:09 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/10 17:38:01 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		check_access(char *file_path)
+int		check_access(char *full_path, char *command)
 {
 	if (access(file_path, X_OK))
-		return (print_permission_denied(file_path));
+		return (print_permission_denied(command));
 	else if (access(file_path, F_OK))
-		return (print_command_not_found(file_path));
+		return (print_command_not_found(command));
+	command = NULL;
 	return (0);
 }
+
 int		command_is_find(char *command, char *dir)
 {
 	DIR				*dirp;
@@ -50,7 +52,7 @@ char	*get_command(char *command, char **directories)
 	while (directories[i])
 	{
 		file_path = create_pathname(directories[i], command);
-		if (!check_access(file_path))
+		if (!check_access(file_path, command))
 			return (file_path);
 		i++;
 	}
