@@ -6,13 +6,13 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 17:26:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/11 12:01:18 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/11 13:15:33 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_invalid_identfier(char *invalid)
+void	print_invalid_identifier(char *invalid)
 {
 	ft_putstr_fd("setenv: `", 2);
 	ft_putstr_fd(invalid, 2);

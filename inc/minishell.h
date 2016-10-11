@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:09:20 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/11 12:05:09 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/11 13:36:48 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define OVERWRITE 1
 # define DONT_OVERWRITE 0
-# define BUILTINS_FUNCTIONS	&ft_cd, &ft_echo, &ft_exit, &ft_exit,\
+# define BUILTINS_FUNCTIONS	&ft_cd, &ft_echo, &ft_exit, \
 							&ft_env, &ft_setenv, &ft_unsetenv
 typedef	struct	s_shell
 {
