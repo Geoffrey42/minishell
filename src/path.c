@@ -6,13 +6,13 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 19:09:45 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/11 03:38:39 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/11 06:15:28 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		check_access(char *file_name, char *full_path, char *command)
+int		check_permission(char *file_name, char *full_path, char *command)
 {
 	if (!(ft_strcmp(file_name, command)))
 	{
@@ -35,7 +35,7 @@ int		command_is_find(char *file_path, char *command, char *dir)
 		return (1);
 	while ((content = readdir(dirp)))
 	{
-		if (!(check_access(content->d_name, file_path, command)))
+		if (!(check_permission(content->d_name, file_path, command)))
 		{
 			closedir(dirp);
 			return (0);

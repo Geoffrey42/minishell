@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:09:20 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/11 03:35:46 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/11 07:40:06 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <dirent.h>
 # include <sys/types.h>
 # include <sys/wait.h>
+
+# define OVERWRITE 1
+# define DONT_OVERWRITE 0
 # define BUILTINS_FUNCTIONS	&ft_cd, &ft_echo, &ft_exit, &ft_exit,\
 							&ft_env, &ft_setenv, &ft_unsetenv
 typedef	struct	s_shell
@@ -72,7 +75,7 @@ int				ft_unsetenv(t_shell *info);
 **path.c
 */
 
-int				check_access(char *file_name, char *full_path, char *command);
+int				check_permission(char *file_name, char *full_path, char *command);
 int				command_is_find(char *file_path, char *command, char *dir);
 char			*get_command(char *command, char **directories);
 char			*get_path(char **environ);

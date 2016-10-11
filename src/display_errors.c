@@ -6,11 +6,16 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 17:26:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/11 03:33:42 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/11 07:43:19 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	print_oldpwd_not_set(void)
+{
+	ft_putendl_fd("minishell: cd: OLDPWD not set", 2);
+}
 
 void	print_permission_denied(char *source, char *target)
 {
