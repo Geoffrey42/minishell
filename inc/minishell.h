@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:09:20 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/11 02:45:04 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/11 03:35:46 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,9 @@ int				looping_shell(t_shell *info);
 **display_errors.c
 */
 
-void			print_permission_denied(char *command);
-int				print_command_not_found(char *command);
-void			print_no_such_file_or_dir(char *command);
-void			choose_error_msg(char *command);
+void			print_permission_denied(char *source, char *target);
+int				print_command_not_found(char *source, char *target);
+void			print_no_such_file_or_dir(char *source, char *target);
 
 /*
 **display.c

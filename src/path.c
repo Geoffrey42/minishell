@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 19:09:45 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/11 02:02:26 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/11 03:38:39 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		check_access(char *file_name, char *full_path, char *command)
 		if (access(full_path, X_OK) != -1)
 			return (0);
 		else 
-			print_permission_denied(command);
+			print_permission_denied("minishell", command);
 	}
 	return (1);
 }
@@ -59,7 +59,7 @@ char	*get_command(char *command, char **directories)
 		free(file_path);
 		i++;
 	}
-	print_command_not_found(command);
+	print_command_not_found("minishell", command);
 	return (NULL);
 }
 
