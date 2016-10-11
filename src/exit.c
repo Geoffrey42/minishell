@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/05 16:08:46 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/11 02:46:02 by ggane            ###   ########.fr       */
+/*   Created: 2016/10/10 22:39:45 by ggane             #+#    #+#             */
+/*   Updated: 2016/10/10 22:52:30 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		main(int ac, char **av, char **env)
+int		ft_exit(t_shell *info)
 {
-	t_shell		*info;
+	t_shell		*tmp;
 
-	ac = 0;
-	av = NULL;
-	if (!(info = ft_memalloc(sizeof(t_shell))))
-		return (1);
-	info->env = copy_array_str(env);
-	looping_shell(info);
-	free(info);
+	tmp = info;
+	ft_putendl("builtin exit is called");
 	return (0);
 }

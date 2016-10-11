@@ -6,16 +6,26 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2016/10/07 08:46:51 by ggane            ###   ########.fr        #
+#    Updated: 2016/10/11 01:38:48 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= minishell
 SRC= src/delete.c \
 	 src/display.c \
-	 src/main.c \
+	 src/display_errors.c \
 	 src/path.c \
-	 src/runner.c 
+	 src/builtins.c \
+	 src/cd.c \
+	 src/echo.c \
+	 src/exit.c \
+	 src/env.c \
+	 src/setenv.c \
+	 src/unsetenv.c \
+	 src/process.c \
+	 src/search_commands.c \
+	 src/looping_shell.c \
+	 src/main.c
 CC= clang
 CFLAGS= -Wall -Werror -Wextra
 INC= inc

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 18:50:01 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/05 18:57:50 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/11 02:37:10 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ char			**copy_array_str(char **origin)
 	int		i;
 
 	i = 0;
+	if (!origin)
+		return (NULL);
 	size = get_origin_size(origin);
 	copy = allocate_memory(size + 1);
 	copy_each_str(origin, copy);
