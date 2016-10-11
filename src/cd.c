@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 22:35:07 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/11 07:43:49 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/11 10:04:29 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int		change_directory(char *dir, t_shell *info)
 {
 	char	cwd[1024];
 
-	ft_setenv("OLDPWD", getcwd(cwd, sizeof(cwd)), OVERWRITE);
+	getcwd(cwd, sizeof(cwd));
+	info = add_export_infos(info, (char *)cwd, "OLDPWD");
+	ft_setenv(info);
 	chdir(dir);
 	return (0);
 }
@@ -47,7 +49,7 @@ int		ft_cd(t_shell *info)
 	char	*dir;
 
 	if (!ft_strcmp(info->args[1], "-"))
-		dir = go_to_previous_dir();
+		dir = go_to_previous_dir(info);
 	else if (!ft_strcmp(info->args[1], "~"))
 		dir = copy_str_from_array(info->env, "HOME");
 	else

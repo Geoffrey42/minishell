@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:09:20 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/11 07:40:06 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/11 12:05:09 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef	struct	s_shell
 {
 	char		**env;
 	char		**args;
+	char		*cwd;
+	char		*var;
 }				t_shell;
 
 /*
@@ -39,6 +41,9 @@ char			**create_builtins_array(void);
 **cd.c
 */
 
+int				change_directory(char *dir, t_shell *info);
+int				check_cd_access(t_shell *info, char *dir);
+char			*go_to_previous_dir(t_shell *info);
 int				ft_cd(t_shell *info);
 
 /*
@@ -63,6 +68,10 @@ int				ft_env(t_shell *info);
 **setenv.c
 */
 
+t_shell			*add_export_infos(t_shell *info, char *cwd, char *var);
+int				check_letters(char *str);
+int				execute_setenv(t_shell *info);
+int				nb_args(char **args);
 int				ft_setenv(t_shell *info);
 
 /*
@@ -75,7 +84,8 @@ int				ft_unsetenv(t_shell *info);
 **path.c
 */
 
-int				check_permission(char *file_name, char *full_path, char *command);
+int				check_permission(char *file_name,
+					char *full_path, char *command);
 int				command_is_find(char *file_path, char *command, char *dir);
 char			*get_command(char *command, char **directories);
 char			*get_path(char **environ);
@@ -107,6 +117,8 @@ int				looping_shell(t_shell *info);
 **display_errors.c
 */
 
+void			print_invalid_identifier(char *invalid);
+void			print_oldpwd_not_set(void);
 void			print_permission_denied(char *source, char *target);
 int				print_command_not_found(char *source, char *target);
 void			print_no_such_file_or_dir(char *source, char *target);
@@ -115,6 +127,7 @@ void			print_no_such_file_or_dir(char *source, char *target);
 **display.c
 */
 
+void			display_env(char **env);
 int				display_str(char *var, int i, char *name);
 int				print_env(char **env, char *name);
 void			display_prompt(void);
