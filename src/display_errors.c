@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 17:26:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/11 13:15:33 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/12 07:53:02 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_invalid_identifier(char *invalid)
 {
-	ft_putstr_fd("setenv: `", 2);
+	ft_putstr_fd("minishell: setenv: `", 2);
 	ft_putstr_fd(invalid, 2);
 	ft_putendl_fd("': not a valid identifier", 2);
 }

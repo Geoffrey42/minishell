@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:09:20 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/11 13:36:48 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/12 06:07:47 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ typedef	struct	s_shell
 {
 	char		**env;
 	char		**args;
-	char		*cwd;
-	char		*var;
 }				t_shell;
 
 /*
@@ -68,7 +66,6 @@ int				ft_env(t_shell *info);
 **setenv.c
 */
 
-t_shell			*add_export_infos(t_shell *info, char *cwd, char *var);
 int				check_letters(char *str);
 int				execute_setenv(t_shell *info);
 int				nb_args(char **args);
