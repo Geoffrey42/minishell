@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:09:20 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/12 06:07:47 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/12 15:10:19 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,22 @@ int				ft_exit(t_shell *info);
 int				ft_env(t_shell *info);
 
 /*
+**setenv_basic_func.c
+*/
+
+char			*copy_name(char *src, size_t size);
+int				variables_cmp(char *to_trim, char *var1);
+int				check_variable_existence(char *var, char **env);
+int				check_letters(char *str);
+int				nb_args(char **args);
+
+/*
 **setenv.c
 */
 
-int				check_letters(char *str);
+char			**reset_value(char **env, char *var, char *arg);
+int				setenv_func(char *arg, char ***env);
 int				execute_setenv(t_shell *info);
-int				nb_args(char **args);
 int				ft_setenv(t_shell *info);
 
 /*

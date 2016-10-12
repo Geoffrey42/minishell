@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2016/10/11 01:38:48 by ggane            ###   ########.fr        #
+#    Updated: 2016/10/12 15:12:42 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC= src/delete.c \
 	 src/exit.c \
 	 src/env.c \
 	 src/setenv.c \
+	 src/setenv_basic_func.c \
 	 src/unsetenv.c \
 	 src/process.c \
 	 src/search_commands.c \
