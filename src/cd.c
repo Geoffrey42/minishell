@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 22:35:07 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/11 13:28:43 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/12 13:28:11 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 int		change_directory(char *dir, t_shell *info)
 {
 	char	cwd[1024];
-	char	*tmp;
+	char	*var;
 
 	getcwd(cwd, sizeof(cwd));
-	tmp = (char *)cwd;
-	tmp = ft_strjoin("OLDPWD=", cwd);
-	info->env = add_str_to_array(info->env, tmp);
-	free(tmp);
+	var = (char *)cwd;
+	var = ft_strjoin("OLDPWD=", cwd);
+	setenv_func(var, &info->env);
+	free(var);
 	chdir(dir);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 10:45:03 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/11 11:55:35 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/12 13:33:40 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,5 +129,6 @@ char				**copy_array_str(char **origin);
 char				*create_pathname(char *daddy, char *son);
 char				*copy_str_from_array(char **origin, char *target);
 char				**add_str_to_array(char **source, char *target);
+size_t				len_till_c(char *src, int c);
 
 #endif
