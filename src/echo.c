@@ -6,12 +6,11 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 22:38:18 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/13 18:31:26 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/13 19:26:42 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <stdio.h> // a supprimer
 
 void	print_after_equal(char *var)
 {
@@ -46,7 +45,9 @@ void	print_message(t_shell *info, int i)
 {
 	if (info->args[i][0] != '$')
 		ft_putstr(info->args[i]);
-	else
+	else if (info->args[i][0] == '$' && ft_strlen(info->args[i]) == 1)
+		ft_putstr(info->args[i]);
+	else if (info->args[i][0] == '$' && ft_strlen(info->args[i]) != 1)
 		print_env_var(info->args[i], info->env);
 }
 
