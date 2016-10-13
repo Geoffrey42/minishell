@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 22:41:07 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/12 17:42:37 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/13 10:18:39 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int		execute_setenv(t_shell *info)
 	{
 		if (!check_letters(info->args[i]))
 		{
-			print_invalid_identifier(info->args[i]);
+			print_invalid_identifier(info->args[i], "setenv");
 			return (1);
 		}
 		else

@@ -6,15 +6,17 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 17:26:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/12 07:53:02 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/13 10:20:40 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_invalid_identifier(char *invalid)
+void	print_invalid_identifier(char *invalid, char *builtin)
 {
-	ft_putstr_fd("minishell: setenv: `", 2);
+	ft_putstr_fd("minishell: ", 2);
+	ft_putstr_fd(builtin, 2);
+	ft_putstr_fd(": `", 2);
 	ft_putstr_fd(invalid, 2);
 	ft_putendl_fd("': not a valid identifier", 2);
 }

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:09:20 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/12 15:10:19 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/13 10:19:12 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int				nb_args(char **args);
 */
 
 char			**reset_value(char **env, char *var, char *arg);
+char			*fill_with_numbers(char *var, size_t len);
 int				setenv_func(char *arg, char ***env);
 int				execute_setenv(t_shell *info);
 int				ft_setenv(t_shell *info);
@@ -124,7 +125,7 @@ int				looping_shell(t_shell *info);
 **display_errors.c
 */
 
-void			print_invalid_identifier(char *invalid);
+void			print_invalid_identifier(char *invalid, char *builtin);
 void			print_oldpwd_not_set(void);
 void			print_permission_denied(char *source, char *target);
 int				print_command_not_found(char *source, char *target);
