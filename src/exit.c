@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 22:39:45 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/11 03:18:33 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/13 19:37:00 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int		ft_exit(t_shell *info)
 {
-	t_shell		*tmp;
-
-	tmp = info;
+	ft_putendl(info->args[0]);
 	exit(EXIT_SUCCESS);
 	return (0);
 }
