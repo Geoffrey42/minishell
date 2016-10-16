@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 22:35:07 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/13 13:50:01 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/16 22:57:01 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ int		ft_cd(t_shell *info)
 	else
 		dir = ft_strdup(info->args[1]);
 	check_cd_access(info, dir);
+	free(dir);
 	return (0);
 }

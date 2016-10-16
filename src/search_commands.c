@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/11 00:55:12 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/11 04:06:39 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/16 23:27:04 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,20 @@ int		search_command_in_path(t_shell *info, char *path)
 	if (!path)
 		return (print_command_not_found("minishell", info->args[0]));
 	directories = ft_strsplit(path, ':');
+	//free(path);
 	if (!(path_command = get_command(info->args[0], directories)))
+	{
+		free(path_command);
+		erase_char_array(&directories);
 		return (1);
+	}
 	if (create_and_execute_new_process(path_command, info))
+	{
+		free(path_command);
+		erase_char_array(&directories);
 		return (1);
+	}
+	free(path_command);
+	erase_char_array(&directories);
 	return (0);
 }

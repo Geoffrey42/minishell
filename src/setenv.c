@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 22:41:07 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/13 10:18:39 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/16 23:09:17 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,8 @@ int		setenv_func(char *arg, char ***env)
 	var = NULL;
 	if (ft_strchr(arg, '='))
 	{
-		if (!(var = (char *)malloc(sizeof(char) * len_till_c(arg, '=') + 1)))
+		if (!(var = ft_memalloc(sizeof(char) * len_till_c(arg, '=') + 1)))
 			return (0);
-		var = fill_with_numbers(var, len_till_c(arg, '='));
 		var = copy_name(arg, len_till_c(arg, '='));
 	}
 	else

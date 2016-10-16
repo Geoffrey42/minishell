@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 14:58:52 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/13 13:45:08 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/16 23:29:19 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,15 @@ int		execute_extern_commands(t_shell *info)
 	if (info->env)
 		path = get_path(info->env);
 	if (ft_strchr(info->args[0], '/'))
+	{
+		free(path);
 		try_to_execute_command_directly(info);
+	}
 	else
+	{
 		search_command_in_path(info, path);
+		free(path);
+	}
 	return (0);
 }
 
@@ -38,12 +44,12 @@ int		execute_command(t_shell *info)
 	{
 		if (!(ft_strcmp(info->args[0], builtins[i])))
 		{
-			free(builtins);
+			erase_char_array(&builtins);
 			return (execute_builtin[i](info));
 		}
 		i++;
 	}
-	free(builtins);
+	erase_char_array(&builtins);
 	return (execute_extern_commands(info));
 }
 
@@ -53,6 +59,7 @@ int		looping_shell(t_shell *info)
 	char	*line;
 
 	status = 0;
+	info->args = NULL;
 	while (!status)
 	{
 		display_prompt();
@@ -61,8 +68,9 @@ int		looping_shell(t_shell *info)
 		if (!line)
 			continue ;
 		info->args = ft_strsplit(line, ' ');
-		status = execute_command(info);
 		free(line);
+		status = execute_command(info);
+		erase_char_array((char ***)&info->args);
 	}
 	return (0);
 }

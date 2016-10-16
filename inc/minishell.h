@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:09:20 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/13 10:19:12 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/16 22:34:47 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,8 @@ void			display_prompt(void);
 **delete.c
 */
 
+void			erase_info(t_shell **info);
+void			erase_char_array(char ***array);
 void			erase_variables(char **words, char *line);
 
 #endif
