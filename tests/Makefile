@@ -6,11 +6,11 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2016/11/06 17:55:20 by ggane            ###   ########.fr        #
+#    Updated: 2016/11/06 20:47:55 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME= minishell
+NAME= main_test
 SRC= src/delete.c \
 	 src/environ.c \
 	 src/main.c \
