@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/21 07:49:14 by ggane             #+#    #+#             */
-/*   Updated: 2016/04/21 07:52:11 by ggane            ###   ########.fr       */
+/*   Updated: 2016/10/24 21:34:56 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putendl(char const *s)
 	char	new_line;
 
 	new_line = '\n';
+	if (!s)
+		return ;
 	write(1, s, ft_strlen(s));
 	write(1, &new_line, 1);
 }

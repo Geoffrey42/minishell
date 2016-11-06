@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:08:46 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/16 23:10:18 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/06 13:23:41 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		main(int ac, char **av, char **env)
 	info->env = copy_array_str(env);
 	del_env = (char **)info->env;
 	looping_shell(info);
-	erase_char_array(&del_env);
+	//erase_char_array(&del_env);
 	free(info);
 	info = NULL;
 	return (0);

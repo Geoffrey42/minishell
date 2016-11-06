@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 17:03:26 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/16 23:04:37 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/06 12:40:18 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		erase_char_array(char ***array)
 	*array = NULL;
 }
 
-void	erase_variables(char **words, char *line)
+void		erase_variables(char **words, char *line)
 {
 	free(words);
 	free(line);

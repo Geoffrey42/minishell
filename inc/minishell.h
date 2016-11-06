@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:09:20 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/16 22:34:47 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/06 13:24:41 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,17 @@ int				ft_setenv(t_shell *info);
 **unsetenv.c
 */
 
+size_t			get_array_size(char **env);
+char			**erase_variable(char **env, char *var);
+int				unsetenv_func(char *arg, char ***env);
+int				check_typo(char *str);
 int				ft_unsetenv(t_shell *info);
+
+/*
+**unsetenv_2.c
+*/
+
+void			copy_less_env(char **copy, char **env, char *var);
 
 /*
 **path.c

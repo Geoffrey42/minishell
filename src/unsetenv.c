@@ -6,32 +6,11 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 22:41:42 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/13 11:37:41 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/06 13:25:00 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	copy_less_env(char **copy, char **env, char *var)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	var = ft_strjoin(var, "=");
-	while (env[i])
-	{
-		if (!variables_cmp(env[i], var))
-			copy[j] = ft_strdup(env[i]);
-		else
-			j--;
-		i++;
-		j++;
-	}
-	copy[i] = NULL;
-	free(var);
-}
 
 size_t	get_array_size(char **env)
 {

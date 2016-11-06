@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 19:09:45 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/11 06:15:28 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/06 12:42:14 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		check_permission(char *file_name, char *full_path, char *command)
 	{
 		if (access(full_path, X_OK) != -1)
 			return (0);
-		else 
+		else
 			print_permission_denied("minishell", command);
 	}
 	return (1);
@@ -51,6 +51,7 @@ char	*get_command(char *command, char **directories)
 	int		i;
 
 	i = 0;
+	file_path = NULL;
 	while (directories[i])
 	{
 		file_path = create_pathname(directories[i], command);

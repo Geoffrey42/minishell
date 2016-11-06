@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 14:58:52 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/16 23:29:19 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/06 12:37:56 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,17 @@ int		execute_extern_commands(t_shell *info)
 	if (info->env)
 		path = get_path(info->env);
 	if (ft_strchr(info->args[0], '/'))
-	{
-		free(path);
 		try_to_execute_command_directly(info);
-	}
 	else
-	{
 		search_command_in_path(info, path);
-		free(path);
-	}
+	free(path);
+	path = NULL;
 	return (0);
 }
 
 int		execute_command(t_shell *info)
 {
-	int			(*execute_builtin[])(t_shell *) = {BUILTINS_FUNCTIONS};
+	static int	(*execute_builtin[])(t_shell *) = {BUILTINS_FUNCTIONS};
 	char		**builtins;
 	int			i;
 
@@ -60,6 +56,7 @@ int		looping_shell(t_shell *info)
 
 	status = 0;
 	info->args = NULL;
+	line = NULL;
 	while (!status)
 	{
 		display_prompt();
