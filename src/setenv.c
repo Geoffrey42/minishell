@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 22:41:07 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/16 23:09:17 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/07 17:52:10 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,16 @@ char	*fill_with_numbers(char *var, size_t len)
 
 int		setenv_func(char *arg, char ***env)
 {
+	char	**del;
 	char	*var;
 
 	var = NULL;
+	del = NULL;
 	if (ft_strchr(arg, '='))
 	{
 		if (!(var = ft_memalloc(sizeof(char) * len_till_c(arg, '=') + 1)))
 			return (0);
+		ft_strdel(&var);
 		var = copy_name(arg, len_till_c(arg, '='));
 	}
 	else
@@ -63,8 +66,7 @@ int		setenv_func(char *arg, char ***env)
 		*env = add_str_to_array(*env, arg);
 	else
 		*env = reset_value(*env, var, arg);
-	free(var);
-	var = NULL;
+	ft_strdel(&var);
 	return (0);
 }
 

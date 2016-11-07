@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 19:09:45 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/06 12:42:14 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/07 10:25:55 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,10 @@ char	*get_path(char **environ)
 	while (environ[i])
 	{
 		if (ft_strstr(environ[i], "PATH="))
-			return (path = ft_strdup(environ[i] + 5));
+		{
+			path = ft_strdup(environ[i] + 5);
+			return (path);
+		}
 		i++;
 	}
 	return (NULL);

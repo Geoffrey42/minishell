@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2016/11/06 13:25:47 by ggane            ###   ########.fr        #
+#    Updated: 2016/11/07 14:14:07 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRC= src/delete.c \
 	 src/looping_shell.c \
 	 src/main.c
 CC= clang
-CFLAGS= -Wall -Werror -Wextra
+CFLAGS= -Wall -Werror -Wextra -g
 INC= inc
 OBJ= $(SRC:.c=.o)
 

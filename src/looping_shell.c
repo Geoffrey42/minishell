@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 14:58:52 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/06 12:37:56 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/07 17:31:24 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ int		execute_extern_commands(t_shell *info)
 		try_to_execute_command_directly(info);
 	else
 		search_command_in_path(info, path);
-	free(path);
-	path = NULL;
+	ft_strdel(&path);
 	return (0);
 }
 
@@ -62,12 +61,13 @@ int		looping_shell(t_shell *info)
 		display_prompt();
 		if (get_next_line(0, &line) == -1)
 			return (1);
-		if (!line)
+		if (ft_strlen(line) == 0)
 			continue ;
 		info->args = ft_strsplit(line, ' ');
-		free(line);
+		ft_strdel(&line);
 		status = execute_command(info);
 		erase_char_array((char ***)&info->args);
 	}
+	ft_strdel(&line);
 	return (0);
 }

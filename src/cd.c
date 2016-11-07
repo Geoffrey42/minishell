@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 22:35:07 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/16 22:57:01 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/07 17:37:48 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		change_directory(char *dir, t_shell *info)
 	var = (char *)cwd;
 	var = ft_strjoin("OLDPWD=", cwd);
 	setenv_func(var, &info->env);
-	free(var);
+	ft_strdel(&var);
 	chdir(dir);
 	return (0);
 }
@@ -53,6 +53,7 @@ int		ft_cd(t_shell *info)
 {
 	char	*dir;
 
+	dir = NULL;
 	if (nb_args(info->args) == 1)
 	{
 		check_cd_access(info, copy_str_from_array(info->env, "HOME"));
@@ -65,6 +66,6 @@ int		ft_cd(t_shell *info)
 	else
 		dir = ft_strdup(info->args[1]);
 	check_cd_access(info, dir);
-	free(dir);
+	ft_strdel(&dir);
 	return (0);
 }
