@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 13:29:33 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/13 11:38:04 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/08 10:28:54 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,10 @@ int		variables_cmp(char *to_trim, char *var1)
 		var2 = copy_name(to_trim, i);
 	if (!ft_strcmp(var1, var2))
 	{
-		free(var2);
+		ft_strdel(&var2);
 		return (1);
 	}
+	ft_strdel(&var2);
 	return (0);
 }
 

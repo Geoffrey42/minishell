@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:20:54 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/04 14:14:46 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/08 11:03:49 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,10 @@ int				get_next_line(const int fd, char **line)
 	*line = ft_strdup(prev);
 	if (ft_strlen(gnl.stock) == 0 && ft_strlen(prev) == 0)
 	{
-		free(prev);
+		ft_strdel(&prev);
 		return (0);
 	}
 	gnl.stock = cut_previous_content(gnl.stock, prev);
+	ft_strdel(&prev);
 	return (1);
 }

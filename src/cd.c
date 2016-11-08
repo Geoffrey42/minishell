@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 22:35:07 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/07 17:37:48 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/08 10:56:47 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,14 @@ char	*go_to_previous_dir(t_shell *info)
 int		ft_cd(t_shell *info)
 {
 	char	*dir;
+	char	*del;
 
 	dir = NULL;
 	if (nb_args(info->args) == 1)
 	{
-		check_cd_access(info, copy_str_from_array(info->env, "HOME"));
+		del = copy_str_from_array(info->env, "HOME");
+		check_cd_access(info, del); 
+		ft_strdel(&del);
 		return (0);
 	}
 	if (!ft_strcmp(info->args[1], "-"))

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 22:41:07 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/07 17:52:10 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/08 10:35:55 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,18 @@
 
 char	**reset_value(char **env, char *var, char *arg)
 {
+	char	*del;
 	int		i;
 
 	i = 0;
+	del = NULL;
 	while (env[i])
 	{
 		if (variables_cmp(env[i], var))
 		{
+			del = env[i];
 			env[i] = ft_strdup(arg);
+			ft_strdel(&del);
 			return (env);
 		}
 		i++;
@@ -63,9 +67,17 @@ int		setenv_func(char *arg, char ***env)
 	else
 		return (0);
 	if (!check_variable_existence(var, *env))
+	{
+		del = *env;
 		*env = add_str_to_array(*env, arg);
+		erase_char_array(&del);
+	}
 	else
+	{
+		del = *env;
 		*env = reset_value(*env, var, arg);
+		erase_char_array(&del);
+	}
 	ft_strdel(&var);
 	return (0);
 }
