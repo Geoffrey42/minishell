@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:20:54 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/08 11:03:49 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/08 12:12:07 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,12 @@ static char		*cut_previous_content(char *str, char *prev)
 	return (str);
 }
 
-static size_t	size_till_next_newline(char *str)
-{
-	size_t		size;
-
-	size = 0;
-	while (str[size] != '\n' && str[size] != '\0')
-		size++;
-	return (size);
-}
-
 static char		*until_newline(char *str)
 {
 	size_t		size;
 	char		*before;
 
-	size = size_till_next_newline(str);
+	size = size_line(str);
 	before = ft_strsub(str, 0, size);
 	return (before);
 }
