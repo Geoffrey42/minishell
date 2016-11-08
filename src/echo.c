@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 22:38:18 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/13 19:26:42 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/08 20:08:24 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	print_var_content(char *var, char **env)
 			print_after_equal(env[i]);
 		i++;
 	}
+	ft_strdel(&equal);
 }
 
 void	print_env_var(char *var, char **env)
