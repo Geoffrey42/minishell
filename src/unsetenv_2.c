@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 12:43:57 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/06 13:24:45 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/08 22:50:14 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ void	copy_less_env(char **copy, char **env, char *var)
 		j++;
 	}
 	copy[i] = NULL;
-	free(var);
+	ft_strdel(&var);
 }

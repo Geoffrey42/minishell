@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 17:03:26 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/06 12:40:18 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/08 22:47:38 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void		erase_char_array(char ***array)
 	char	**tmp;
 
 	tmp = *array;
+	if (!array)
+		return ;
 	while (*tmp)
 	{
 		free(*tmp);
