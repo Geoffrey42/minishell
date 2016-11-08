@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 22:35:07 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/08 20:39:54 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/08 21:24:06 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		ft_cd(t_shell *info)
 	if (nb_args(info->args) == 1)
 	{
 		del = copy_str_from_array(info->env, "HOME");
-		check_cd_access(info, del); 
+		check_cd_access(info, del);
 		ft_strdel(&del);
 		return (0);
 	}

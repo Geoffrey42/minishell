@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2016/11/07 14:14:07 by ggane            ###   ########.fr        #
+#    Updated: 2016/11/08 21:30:03 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ SRC= src/delete.c \
 	 src/display.c \
 	 src/display_errors.c \
 	 src/path.c \
-	 src/builtins.c \
 	 src/cd.c \
 	 src/echo.c \
 	 src/exit.c \

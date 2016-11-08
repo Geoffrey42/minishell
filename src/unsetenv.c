@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 22:41:42 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/08 20:16:41 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/08 21:38:39 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,17 @@ char	**erase_variable(char **env, char *var)
 	if (!copy)
 		return (NULL);
 	copy_less_env(copy, env, var);
+	erase_char_array(&env);
 	return (copy);
 }
 
 int		unsetenv_func(char *arg, char ***env)
 {
-	char	**del;
 	char	*var;
 
-	del = NULL;
 	var = ft_strdup(arg);
 	if (!check_variable_existence(var, *env))
-	{
-		del = *env;
 		*env = erase_variable(*env, var);
-		erase_char_array(&del);
-	}
 	ft_strdel(&var);
 	return (0);
 }

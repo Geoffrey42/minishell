@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:09:20 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/07 17:59:01 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/08 21:32:40 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,13 @@
 
 # define OVERWRITE 1
 # define DONT_OVERWRITE 0
-# define BUILTINS_FUNCTIONS	&ft_cd, &ft_echo, &ft_exit, \
-							&ft_env, &ft_setenv, &ft_unsetenv
+# define BUILTINS &ft_cd, &ft_echo, &ft_exit, &ft_env, &ft_setenv, &ft_unsetenv
+
 typedef	struct	s_shell
 {
 	char		**env;
 	char		**args;
 }				t_shell;
-
-/*
-**builtins.c
-*/
-
-char			**create_builtins_array(void);
 
 /*
 **cd.c
@@ -128,6 +122,7 @@ int				search_command_in_path(t_shell *info, char *path);
 */
 
 int				execute_extern_commands(t_shell *info);
+char			**create_builtins_array(void);
 int				execute_commands(t_shell *info);
 int				looping_shell(t_shell *info);
 

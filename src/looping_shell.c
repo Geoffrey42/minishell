@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 14:58:52 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/08 20:40:20 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/08 21:32:43 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,14 @@ int		execute_extern_commands(t_shell *info)
 	return (0);
 }
 
+char		**create_builtins_array(void)
+{
+	return (ft_strsplit("cd,echo,exit,env,setenv,unsetenv", ','));
+}
+
 int		execute_command(t_shell *info)
 {
-	static int	(*execute_builtin[])(t_shell *) = {BUILTINS_FUNCTIONS};
+	static int	(*execute_builtin[])(t_shell *) = {BUILTINS};
 	char		**builtins;
 	int			i;
 
