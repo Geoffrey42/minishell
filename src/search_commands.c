@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/11 00:55:12 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/08 20:40:36 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/15 09:06:04 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		search_command_in_path(t_shell *info, char *path)
 		status = 1;
 	if (create_and_execute_new_process(path_command, info))
 		status = 1;
-	free(path_command);
+	ft_strdel(&path_command);
 	erase_char_array(&directories);
 	return (status);
 }

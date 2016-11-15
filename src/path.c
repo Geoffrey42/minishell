@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 19:09:45 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/07 10:25:55 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/15 09:13:59 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*get_command(char *command, char **directories)
 		file_path = create_pathname(directories[i], command);
 		if (!(command_is_find(file_path, command, directories[i])))
 			return (file_path);
-		free(file_path);
+		ft_strdel(&file_path);
 		i++;
 	}
 	print_command_not_found("minishell", command);
