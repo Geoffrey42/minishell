@@ -6,37 +6,38 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 17:01:53 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/15 10:44:36 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/15 14:43:05 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_list	*create_env_list(char **env)
+t_data	*parse_env(char *env)
 {
-	char	*copy;
-	int		i;
+	t_data	*data;
 
-	i = 0;
-	environ = NULL;
-	copy = NULL;
-	while (env[i])
-	{
-		copy = ft_strdup(env[i]);
-		ft_lstadd(&environ, ft_lstnew(copy, sizeof(copy)));
-		ft_strdel(&copy);
-		i++;
-	}
-	return (environ);
+	data = NULL;
+	data->var_name = ft_strsub(
+		env, ft_strchr(env, env[0]), len_till_c(env, '='));
+	data->var_content = ft_strsub(
+		env, ft_strchr(env, '='), len_till_c(env, '\0'));
+	data->args = NULL;
+	return (data);
 }
 
-void	print_list(t_list *list)
+t_list	*create_env_list(char **env)
 {
-	ft_putendl("---------");
-	while (list)
+	t_list		*info;
+	t_data		*data;
+	int			i;
+
+	i = 0;
+	while (env[i])
 	{
-		ft_putendl(list->content);
-		list = list->next;
+		data = parse_env(env[i]);
+		ft_lstadd(&info, ft_lstnew(data, sizeof(data)));
+		delete_data(&data);
+		i++;
 	}
-	ft_putendl("---------");
+	return (info);
 }

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/15 10:34:40 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/15 14:00:48 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,20 @@ typedef struct	s_shell
 ** minishell.c
 */
 
-int				minishell(t_list *environ);
+int				minishell(t_list *info);
 
 /*
 ** environ.c
 */
 
 t_list			*create_env_list(char **env);
+
+/*
+** display.c
+*/
+
+void			display_prompt(void);
+void			print_data(t_shell *data);
 void			print_list(t_list *list);
 
 /*
@@ -40,5 +47,7 @@ void			print_list(t_list *list);
 */
 
 void			delete_environ(void *content, size_t size);
+void			delete_data(t_data **del);
+void			delete_info(t_list **info);
 
 #endif
