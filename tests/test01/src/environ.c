@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 17:01:53 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/15 15:18:18 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/15 15:35:24 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ t_data	*parse_env(char *env)
 
 	data = NULL;
 	data->var_name = ft_strsub(
-		env, ft_strchr(env, env[0]), len_till_c(env, '='));
+		env, env[0], len_till_c(env, '='));
 	data->var_content = ft_strsub(
-		env, ft_strchr(env, '='), len_till_c(env, '\0'));
+		env, '=', len_till_c(env, '\0'));
 	data->args = NULL;
 	return (data);
 }

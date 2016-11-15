@@ -1,43 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   environ.c                                          :+:      :+:    :+:   */
+/*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/06 17:01:53 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/15 15:18:18 by ggane            ###   ########.fr       */
+/*   Created: 2016/11/15 09:58:29 by ggane             #+#    #+#             */
+/*   Updated: 2016/11/15 15:20:47 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_data	*parse_env(char *env)
+void	display_prompt(void)
 {
-	t_data	*data;
-
-	data = NULL;
-	data->var_name = ft_strsub(
-		env, ft_strchr(env, env[0]), len_till_c(env, '='));
-	data->var_content = ft_strsub(
-		env, ft_strchr(env, '='), len_till_c(env, '\0'));
-	data->args = NULL;
-	return (data);
+	ft_putstr("$> ");
 }
 
-t_list	*create_env_list(char **env)
+void	print_data(t_data *data)
 {
-	t_list		*info;
+	ft_putstr(data->var_name);
+	ft_putchar(' ');
+	ft_putendl(data->var_content);
+}
+
+void	print_list(t_list *list)
+{
 	t_data		*data;
 	int			i;
 
+	data = NULL;
 	i = 0;
-	while (env[i])
+	ft_putendl("---------");
+	while (list)
 	{
-		data = parse_env(env[i]);
-		ft_lstadd(&info, ft_lstnew(data, sizeof(data)));
-		delete_data(&data);
+		data = (t_data *)list->content;
+		print_data(data);
 		i++;
+		list = list->next;
 	}
-	return (info);
+	ft_putstr("la liste a ");
+	ft_putnbr(i);
+	ft_putendl(" elements.");
+	ft_putendl("---------");
 }
