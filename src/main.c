@@ -6,24 +6,26 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:39:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/06 17:17:37 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/15 10:45:31 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+void	mute_compilator_flags(int ac, char **av)
+{
+	if (av)
+		av = NULL;
+	ac = 0;
+}
+
 int		main(int ac, char **av, char **env)
 {
-	void	(*del)(void *, size_t);
-	t_list	*environ;
-	int		status;
+	t_list	*data;
 
-	del = &delete_environ;
-	environ = create_env_list(env);
-	status = 1;
+	data = create_env_list(env);
 	mute_compilator_flags(ac, av);
-	while (status)
-		status = minishell(environ);
-	ft_lstdel(&environ, del);
+	minishell(data);
+	delete_data(&data);
 	return (0);
 }

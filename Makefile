@@ -6,18 +6,17 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2016/11/06 17:10:27 by ggane            ###   ########.fr        #
+#    Updated: 2016/11/15 09:43:21 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= minishell
 SRC= src/main.c \
 	 src/delete.c \
-	 src/norm.c \
 	 src/environ.c \
 	 src/minishell.c
 CC= clang
-CFLAGS= -Wall -Werror -Wextra
+CFLAGS= -Wall -Werror -Wextra -g
 INC= inc
 OBJ= $(SRC:.c=.o)
 

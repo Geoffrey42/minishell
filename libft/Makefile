@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/04/07 10:38:58 by ggane             #+#    #+#              #
-#    Updated: 2016/10/12 13:33:08 by ggane            ###   ########.fr        #
+#    Updated: 2016/11/15 11:27:23 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ ft_strlcat.c ft_strlen.c ft_strmap.c ft_strmapi.c ft_strncat.c ft_strncmp.c \
 ft_strncpy.c ft_strnequ.c ft_strnew.c ft_strnstr.c ft_strrchr.c ft_strsplit.c \
 ft_strstr.c ft_strsub.c ft_strtrim.c ft_tolower.c ft_toupper.c get_next_line.c \
 is_empty.c btree_delete.c copy_array_str.c create_pathname.c \
-copy_str_from_array.c add_str_to_array.c len_till_c.c
+copy_str_from_array.c add_str_to_array.c len_till_c.c erase_char_array.c
 OBJ = $(SRC:.c=.o)
 INC = ./inc/
 

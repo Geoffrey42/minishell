@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   norm.c                                             :+:      :+:    :+:   */
+/*   erase_char_array.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/06 16:02:01 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/06 16:04:02 by ggane            ###   ########.fr       */
+/*   Created: 2016/11/15 10:56:00 by ggane             #+#    #+#             */
+/*   Updated: 2016/11/15 11:24:38 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-/*
-** This file only contains functions made to avoid norm issues
-*/
-
-void	mute_compilator_flags(int ac, char **av)
+void	erase_char_array(char ***array)
 {
-	if (av)
-		av = NULL;
-	ac = 0;
+	char	**tmp;
+
+	tmp = *array;
+	if (!array)
+		return ;
+	while (*tmp)
+	{
+		free(*tmp);
+		*tmp = NULL;
+		tmp++;
+	}
+	free(*array);
+	*array = NULL;
 }
