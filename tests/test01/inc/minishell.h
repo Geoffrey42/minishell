@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/15 15:13:03 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/29 16:44:48 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define MINISHELL_H
 
 #include "libft.h"
+
+# define BUILTINS &ft_cd, &ft_echo, &ft_exit, &ft_env, &ft_setenv, &ft_unsetenv
 
 typedef struct	s_data
 {
@@ -23,10 +25,54 @@ typedef struct	s_data
 }				t_data;
 
 /*
+** ft_cd.c
+*/
+
+int				ft_cd(t_list *data);
+
+/*
+** ft_echo.c
+*/
+
+int				ft_echo(t_list *data);
+
+/*
+** ft_exit.c
+*/
+
+int				ft_exit(t_list *data);
+
+/*
+** ft_env.c
+*/
+
+int				ft_env(t_list *data);
+
+/*
+** ft_setenv.c
+*/
+
+int				ft_setenv(t_list *data);
+
+/*
+** ft_unsetenv.c
+*/
+
+int				ft_unsetenv(t_list *data);
+
+/*
 ** minishell.c
 */
 
-int				minishell(t_list *info);
+char			**create_builtins_array(void);
+int				check_if_builtin(t_list *data);
+int				minishell(t_list *data);
+
+/*
+** extern_command.c
+*/
+
+int				execute_extern_commands(t_list *data);
 
 /*
 ** environ.c
