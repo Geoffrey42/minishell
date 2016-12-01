@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 09:58:29 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/01 11:32:50 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/01 15:10:44 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,20 @@
 void	display_prompt(void)
 {
 	ft_putstr("$> ");
+}
+
+void	print_char_array(char **target)
+{
+	int		i;
+
+	i = 0;
+	ft_putendl("*******");
+	while (target[i])
+	{
+		ft_putendl(target[i]);
+		i++;
+	}
+	ft_putendl("*******");
 }
 
 void	print_data(t_data *data)

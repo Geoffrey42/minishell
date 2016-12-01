@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/01 10:49:34 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/01 16:03:03 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,16 @@ void				delete_list(t_data **list);
 */
 
 int					execute_extern_commands(t_data *data);
+int					try_to_execute_command_directly(t_data *data);
+int					search_command_in_path(t_data *data, char *path);
+char				*get_path(t_data *data);
 
 /*
 ** environ.c
 */
 
+int					check_if_environ_is_empty(t_data *data);
+t_data				*parse_env(char *env);
 t_data				*create_env_list(char **env);
 
 /*
@@ -94,6 +99,7 @@ t_data				*create_env_list(char **env);
 */
 
 void				display_prompt(void);
+void				print_char_array(char **target);
 void				print_data(t_data *data);
 void				print_list(t_data *list);
 
