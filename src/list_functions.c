@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 10:18:28 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/01 11:34:14 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/01 17:05:04 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,29 @@ void	delete_list(t_data **list)
 		}
 		*list = NULL;
 	}
+}
+
+t_data	*create_env_list(char **env)
+{
+	t_data		*data;
+	int			i;
+
+	i = 0;
+	data = NULL;
+	while (env[i])
+		list_push_back(&data, parse_env(env[i++]));
+	return (data);
+}
+
+size_t	list_size(t_data *data)
+{
+	size_t	size;
+
+	size = 0;
+	while (data)
+	{
+		size++;
+		data = data->next;
+	}
+	return (size);
 }

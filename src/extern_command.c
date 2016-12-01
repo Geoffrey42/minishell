@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:43:23 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/01 16:05:50 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/01 16:35:19 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,32 @@ int		execute_extern_commands(t_data *data)
 
 int		try_to_execute_command_directly(t_data *data)
 {
-	ft_putendl("chemin absolu");
-	(void)data;
+	if (!(access(data->args[0], F_OK)) && !(access(data->args[0], X_OK)))
+		create_and_execute_new_process(data->args[0], data);
+	else if (!(access(data->args[0], F_OK)) && access(data->args[0], X_OK))
+		print_permission_denied("minishell", data->args[0]);
+	else if (access(data->args[0], F_OK))
+		print_no_such_file_or_dir("minishell", data->args[0]);
 	return (0);
 }
 
 int		search_command_in_path(t_data *data, char *path)
 {
-	ft_putendl("commande a chercher dans path");
-	(void)data;
-	(void)path;
-	return (0);
-}
+	char	**directories;
+	char	*path_command;
+	int		status;
 
-char	*get_path(t_data *data)
-{
-	char	*path;
-
-	path = NULL;
-	(void)data;
-	return (path);
+	directories = NULL;
+	path_command = NULL;
+	status = 0;
+	if (!path)
+		return (print_command_not_found("minishell", data->args[0]));
+	directories = ft_strsplit(path, ':');
+	if (!(path_command = get_command(data->args[0], directories)))
+		status = 1;
+	if (create_and_execute_new_process(path_command, data))
+		status = 1;
+	ft_strdel(&path_command);
+	erase_char_array(&directories);
+	return (status);
 }

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 17:01:53 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/01 16:01:22 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/01 17:11:07 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,34 @@ t_data	*parse_env(char *env)
 	return (data);
 }
 
-t_data	*create_env_list(char **env)
+char	*join_variables(t_data *data, char *env)
 {
-	t_data		*data;
-	int			i;
+	env = ft_strjoin(data->var_name, "=");
+	env = ft_strjoin(env, data->var_content);
+	return (env);
+}
+
+void	copy_each_cell(t_data *data, char **env)
+{
+	int		i;
 
 	i = 0;
-	data = NULL;
-	while (env[i])
-		list_push_back(&data, parse_env(env[i++]));
-	return (data);
+	while (data)
+	{
+		env[i] = join_variables(data, env[i]);
+		data = data->next;
+		i++;
+	}
+	env[i] = NULL;
+}
+
+char	**create_env_array(t_data *data)
+{
+	char	**env;
+	size_t	size;
+
+	size = list_size(data);
+	env = ft_memalloc(sizeof(char *) * size);
+	copy_each_cell(data, env);
+	return (env);
 }

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:59:44 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/01 15:42:22 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/01 17:27:19 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int		minishell(t_data *data)
 		data->args = ft_strsplit(line, ' ');
 		ft_strdel(&line);
 		check_if_builtin(data);
-		print_char_array(data->args);
 		erase_char_array(&data->args);
 	}
 	return (0);
