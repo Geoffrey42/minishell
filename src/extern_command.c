@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:43:23 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/01 16:35:19 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/01 17:39:56 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		execute_extern_commands(t_data *data)
 	char	*path;
 
 	path = NULL;
-	if (check_if_environ_is_empty(data))
+	if (!check_if_environ_is_empty(data))
 		path = get_path(data);
 	if (ft_strchr(data->args[0], '/'))
 		try_to_execute_command_directly(data);
