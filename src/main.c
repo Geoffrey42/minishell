@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:39:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/01 10:53:36 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/01 14:28:34 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,8 @@ int		main(int ac, char **av, char **env)
 	t_data	*info;
 
 	info = create_env_list(env);
-	print_list(info);
 	mute_compilator_flags(ac, av);
-	//minishell(info);
+	minishell(info);
 	delete_list(&info);
-	print_list(info);
-	while (1);
 	return (0);
 }
