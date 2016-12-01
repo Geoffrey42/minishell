@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 09:58:29 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/15 13:38:57 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/01 11:32:50 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,29 @@ void	display_prompt(void)
 	ft_putstr("$> ");
 }
 
-void	print_data(t_shell *data)
+void	print_data(t_data *data)
 {
+	ft_putstr("data : [");
 	ft_putstr(data->var_name);
-	ft_putchar(' ');
-	ft_putendl(data->var_content);
+	ft_putstr("] [");
+	ft_putstr(data->var_content);
+	ft_putendl("]");
 }
 
-void	print_list(t_list *list)
+void	print_list(t_data *list)
 {
-	t_shell		*data;
+	int		i;
 
-	data = NULL;
+	i = 0;
 	ft_putendl("---------");
 	while (list)
 	{
-		data = (t_shell *)list->content;
-		print_data(data);
+		print_data(list);
+		i++;
 		list = list->next;
 	}
+	ft_putstr("la liste a ");
+	ft_putnbr(i);
+	ft_putendl(" elements.");
 	ft_putendl("---------");
 }

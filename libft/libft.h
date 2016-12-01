@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 10:45:03 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/15 11:22:14 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/01 09:32:46 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,5 +131,6 @@ char				*copy_str_from_array(char **origin, char *target);
 char				**add_str_to_array(char **source, char *target);
 void				erase_char_array(char ***array);
 size_t				len_till_c(char *src, int c);
+void				ft_putnbrdl(int n);
 
 #endif

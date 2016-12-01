@@ -6,32 +6,52 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:59:44 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/15 13:58:46 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/01 11:59:34 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		minishell(t_list *data)
+char	**create_builtins_array(void)
 {
-	char	**args;
-	char	*line;
-	int		built_nb;
+	return (ft_strsplit("cd,echo,exit,env,setenv,unsetenv", ','));
+}
 
-	args = NULL;
+int		check_if_builtin(t_data *data)
+{
+	static int	(*execute_builtin[])(t_data *) = {BUILTINS};
+	char		**builtins;
+	int			i;
+
+	i = 0;
+	builtins = create_builtins_array();
+	while (builtins[i])
+	{
+		if (!(ft_strcmp(data->args[0], builtins[i])))
+		{
+			erase_char_array(&builtins);
+			return (execute_builtin[i](data));
+		}
+		i++;
+	}
+	erase_char_array(&builtins);
+	i = execute_extern_commands(data);
+	return (execute_extern_commands(data));
+}
+
+int		minishell(t_data *data)
+{
+	char	*line;
+
 	line = NULL;
-	built_nb = 0;
 	while (1)
 	{
 		display_prompt();
 		get_next_line(0, &line);
-		args = ft_strsplit(line);
+		data->args = ft_strsplit(line, ' ');
 		ft_strdel(&line);
-		if ((r = check_if_args_is_builtin(args[0])) != -1)
-			execute_builtins(args, data, built_nb);
-		else
-			execute_commands(args, data);
-		erase_char_array(args);
+		check_if_builtin(data);
+		erase_char_array(&data->args);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 17:01:53 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/15 15:18:18 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/01 10:52:41 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,23 @@
 t_data	*parse_env(char *env)
 {
 	t_data	*data;
+	int		equal;
 
-	data = NULL;
-	data->var_name = ft_strsub(
-		env, ft_strchr(env, env[0]), len_till_c(env, '='));
-	data->var_content = ft_strsub(
-		env, ft_strchr(env, '='), len_till_c(env, '\0'));
-	data->args = NULL;
+	data = create_elem();
+	equal = len_till_c(env, '=');
+	data->var_name = ft_strsub(env, 0, equal);
+	data->var_content = ft_strsub(env, equal + 1, ft_strlen(env));
 	return (data);
 }
 
-t_list	*create_env_list(char **env)
+t_data	*create_env_list(char **env)
 {
-	t_list		*info;
 	t_data		*data;
 	int			i;
 
 	i = 0;
+	data = NULL;
 	while (env[i])
-	{
-		data = parse_env(env[i]);
-		ft_lstadd(&info, ft_lstnew(data, sizeof(data)));
-		delete_data(&data);
-		i++;
-	}
-	return (info);
+		list_push_back(&data, parse_env(env[i++]));
+	return (data);
 }
