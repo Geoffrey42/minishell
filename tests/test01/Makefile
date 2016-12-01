@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2016/11/29 16:46:21 by ggane            ###   ########.fr        #
+#    Updated: 2016/12/01 10:31:23 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC= src/main.c \
 	 src/display.c \
 	 src/environ.c \
 	 src/extern_command.c \
+	 src/list_functions.c \
 	 src/minishell.c
 CC= clang
 CFLAGS= -Wall -Werror -Wextra -g

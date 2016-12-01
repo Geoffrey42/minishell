@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbrdl.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/06 15:39:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/01 10:53:36 by ggane            ###   ########.fr       */
+/*   Created: 2016/12/01 09:31:29 by ggane             #+#    #+#             */
+/*   Updated: 2016/12/01 09:33:01 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	mute_compilator_flags(int ac, char **av)
+void	ft_putnbrdl(int n)
 {
-	if (av)
-		av = NULL;
-	ac = 0;
-}
+	long long int		lli;
 
-int		main(int ac, char **av, char **env)
-{
-	t_data	*info;
-
-	info = create_env_list(env);
-	print_list(info);
-	mute_compilator_flags(ac, av);
-	//minishell(info);
-	delete_list(&info);
-	print_list(info);
-	while (1);
-	return (0);
+	lli = n;
+	if (lli < 0)
+	{
+		ft_putchar('-');
+		lli = -lli;
+	}
+	if (lli > 9)
+	{
+		ft_putnbr(lli / 10);
+		ft_putchar((lli % 10) + '0');
+	}
+	else
+		ft_putchar(lli + '0');
+	ft_putchar('\n');
 }
