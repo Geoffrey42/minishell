@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 10:18:28 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/01 17:05:04 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/02 20:13:46 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,25 +39,6 @@ t_data	*create_elem(void)
 	new->args = NULL;
 	new->next = NULL;
 	return (new);
-}
-
-void	delete_list(t_data **list)
-{
-	t_data	*cpy;
-	t_data	*temp;
-
-	if (*list)
-	{
-		cpy = *list;
-		while (cpy)
-		{
-			temp = cpy->next;
-			delete_data(&cpy);
-			free(cpy);
-			cpy = temp;
-		}
-		*list = NULL;
-	}
 }
 
 t_data	*create_env_list(char **env)

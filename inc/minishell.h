@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/02 17:31:24 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/02 20:29:10 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ int					ft_exit(t_data *data);
 */
 
 void				get_utility(t_data **new_env, char **args);
-void				fill_modifications_list(t_data **modifications, char *var);
-t_data				*get_modifications(char **env_args);
 int					ft_env(t_data *data);
 
 /*
@@ -82,7 +80,6 @@ int					minishell(t_data *data);
 
 void				list_push_back(t_data **list, t_data *new);
 t_data				*create_elem(void);
-void				delete_list(t_data **list);
 t_data				*create_env_list(char **env);
 size_t				list_size(t_data *data);
 
@@ -125,7 +122,10 @@ char				**create_env_array(t_data *data);
 ** modify_environ.c
 */
 
+void				add_new_var(t_data **modifications, t_data **new);
+void				modify_existing_var(t_data **modifications, t_data **new);
 void				modify_specific_variables(t_data **new, t_data *modifications);
+t_data				*get_modifications(char **env_args);
 t_data				*copy_data(t_data *data);
 t_data				*copy_env(t_data *data);
 t_data				*modify_env(t_data *data);
@@ -154,5 +154,7 @@ void				print_no_such_file_or_dir(char *source, char *target);
 */
 
 void				delete_data(t_data **del);
+void				delete_this_cell(t_data **list);
+void				delete_list(t_data **list);
 
 #endif

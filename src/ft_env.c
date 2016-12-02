@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:26:16 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/02 17:30:48 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/02 20:23:10 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,16 @@
 
 void	get_utility(t_data **new_env, char **args)
 {
-	(void)new_env;
-	(void)args;
-}
+	t_data	*tmp;
 
-void	fill_modifications_list(t_data **modifications, char *var)
-{
-	(void)modifications;
-	(void)var;
-}
-
-t_data	*get_modifications(char **env_args)
-{
-	t_data	*modifications;
-	int		i;
-
-	modifications = NULL;
-	i = 0;
-	while (env_args[i])
+	tmp = *new_env;
+	if (!*new_env || !args)
+		return ;
+	while (tmp)
 	{
-		if (env_args[i][0] != '-' && ft_strchr(env_args[i], '='))
-			fill_modifications_list(&modifications, env_args[i]);
-		i++;
+		tmp->args = copy_array_str(args);
+		tmp = tmp->next;
 	}
-	return (modifications);
 }
 
 int		ft_env(t_data *data)
