@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2016/12/01 17:21:24 by ggane            ###   ########.fr        #
+#    Updated: 2016/12/02 16:50:15 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRC= src/main.c \
 	 src/delete.c \
 	 src/display.c \
 	 src/display_errors.c \
-	 src/environ.c \
+	 src/create_environ.c \
+	 src/modify_environ.c \
 	 src/extern_command.c \
 	 src/path.c \
 	 src/process.c \

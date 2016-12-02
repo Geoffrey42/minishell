@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 19:09:45 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/01 18:03:22 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/02 14:52:14 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ char	*get_command(char *command, char **directories)
 	while (directories[i])
 	{
 		file_path = create_pathname(directories[i], command);
-		ft_putstr("file_path : ");
-		ft_putendl(file_path);
 		if (!(command_is_find(file_path, command, directories[i])))
 			return (file_path);
 		ft_strdel(&file_path);

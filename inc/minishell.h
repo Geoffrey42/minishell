@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/01 17:25:42 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/02 17:31:24 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ int					ft_exit(t_data *data);
 ** ft_env.c
 */
 
+void				get_utility(t_data **new_env, char **args);
+void				fill_modifications_list(t_data **modifications, char *var);
+t_data				*get_modifications(char **env_args);
 int					ft_env(t_data *data);
 
 /*
@@ -109,7 +112,7 @@ void				execute_file(t_data *data, char *file);
 int					create_and_execute_new_process(char *file, t_data *data);
 
 /*
-** environ.c
+** create_environ.c
 */
 
 int					check_if_environ_is_empty(t_data *data);
@@ -117,6 +120,15 @@ t_data				*parse_env(char *env);
 char				*join_variables(t_data *data, char *env);
 void				copy_each_cell(t_data *data, char **env);
 char				**create_env_array(t_data *data);
+
+/*
+** modify_environ.c
+*/
+
+void				modify_specific_variables(t_data **new, t_data *modifications);
+t_data				*copy_data(t_data *data);
+t_data				*copy_env(t_data *data);
+t_data				*modify_env(t_data *data);
 
 /*
 ** display.c

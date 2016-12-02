@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:59:44 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/01 17:27:19 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/02 16:04:17 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int		check_if_builtin(t_data *data)
 		if (!(ft_strcmp(data->args[0], builtins[i])))
 		{
 			erase_char_array(&builtins);
-			ft_putendl("command is builtin !");
 			return (execute_builtin[i](data));
 		}
 		i++;
