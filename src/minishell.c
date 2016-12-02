@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:59:44 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/02 16:04:17 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/02 21:06:42 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,16 @@ int		check_if_builtin(t_data *data)
 	return (execute_extern_commands(data));
 }
 
+int		args_number(char **args)
+{
+	int		i;
+
+	i = 0;
+	while (args[i])
+		i++;
+	return (i);
+}
+
 int		minishell(t_data *data)
 {
 	char	*line;
@@ -50,6 +60,7 @@ int		minishell(t_data *data)
 		display_prompt();
 		get_next_line(0, &line);
 		data->args = ft_strsplit(line, ' ');
+		data->ac = args_number(data->args);
 		ft_strdel(&line);
 		check_if_builtin(data);
 		erase_char_array(&data->args);

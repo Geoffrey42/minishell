@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/02 20:29:10 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/02 21:12:47 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct		s_data
 	char			*var_name;
 	char			*var_content;
 	char			**args;
+	int				ac;
 	struct s_data	*next;
 }					t_data;
 
@@ -51,7 +52,7 @@ int					ft_exit(t_data *data);
 ** ft_env.c
 */
 
-void				get_utility(t_data **new_env, char **args);
+void				get_utility(t_data **new_env, t_data *data);
 int					ft_env(t_data *data);
 
 /*
@@ -72,6 +73,7 @@ int					ft_unsetenv(t_data *data);
 
 char				**create_builtins_array(void);
 int					check_if_builtin(t_data *data);
+int					args_number(char **args);
 int					minishell(t_data *data);
 
 /*

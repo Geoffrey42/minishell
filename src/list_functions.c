@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 10:18:28 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/02 20:13:46 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/02 21:09:55 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_data	*create_elem(void)
 	new->var_name = NULL;
 	new->var_content = NULL;
 	new->args = NULL;
+	new->ac = 0;
 	new->next = NULL;
 	return (new);
 }
