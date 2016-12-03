@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:26:16 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/03 09:55:17 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/03 10:58:01 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,17 @@ void	modify_env(t_data *data)
 	t_data	*new_env;
 
 	new_env = create_modified_env(data);
+	ft_putendl("create_modified_env() ok");
 	get_args(&new_env, data);
+	ft_putendl("get_args() ok");
 	if (new_env->args)
+	{
+		ft_putendl("il y a une commande a laquelle env doit etre appliquee");
 		check_if_builtin(new_env);
+		ft_putendl("check_if_builtin() ok");
+	}
 	delete_list(&new_env);
+	ft_putendl("end modify_env()");
 }
 
 int		ft_env(t_data *data)

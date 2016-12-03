@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 16:44:24 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/03 10:01:31 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/03 11:02:54 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,18 @@ void	add_new_var(t_data **modifications, t_data **new)
 	t_data	*tmp;
 
 	tmp = *new;
+	ft_putendl("start add_new_var()");
 	while (*modifications)
 	{
+		ft_putendl("check si il y a des nouvelles variables a ajouter");
 		list_push_back(&tmp, *modifications);
+		ft_putendl("list_push_back() ok");
 		*modifications = (*modifications)->next;
+		ft_putendl("passage au prochain maillon liste des modifs");
 		delete_this_cell(modifications);
+		ft_putendl("delete_this_cell() ok");
 	}
+	ft_putendl("end add_new_var()");
 }
 
 void	modify_existing_var(t_data **modifications, t_data **new)
@@ -44,16 +50,23 @@ void	modify_existing_var(t_data **modifications, t_data **new)
 
 void	modify_specific_variables(t_data **new, t_data **modifications)
 {
-	while (*modifications)
+	t_data	*tmp;
+
+	tmp = *modifications;
+	ft_putendl("liste des modifs :");
+	print_list(*modifications);
+	while (tmp)
 	{
-		modify_existing_var(modifications, new);
-		if (*modifications)
-			*modifications = (*modifications)->next;
+		ft_putendl("check si variable deja dans env");
+		modify_existing_var(&tmp, new);
+		if (tmp)
+			tmp = tmp->next;
 	}
 	if (*modifications)
 	{
-		ft_putendl("modifs est une variable inexistante dans env");
+		ft_putendl("modifs est peut-etre une variable nouvelle");
 		add_new_var(modifications, new);
+		ft_putendl("add_new_var() ok");
 	}
 }
 
@@ -104,7 +117,17 @@ t_data	*create_modified_env(t_data *data)
 	new_env = copy_env(data);
 	modifications = get_modifications(data->args);
 	modify_specific_variables(&new_env, &modifications);
+	ft_putendl("modify_specific_variables() ok");
 	if (modifications)
+	{
+		ft_putendl("liste modifications non vide");
 		delete_list(&modifications);
+		ft_putendl("delete_list() ok");
+	}
+	ft_putendl("liste des modifs :");
+	print_list(modifications);
+	ft_putendl("nouvel environ");
+	print_list(new_env);
+	ft_putendl("end create_modified_env()");
 	return (new_env);
 }
