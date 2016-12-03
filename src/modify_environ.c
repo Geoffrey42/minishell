@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 16:44:24 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/02 21:11:21 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/03 10:01:31 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	modify_existing_var(t_data **modifications, t_data **new)
 	t_data	*tmp;
 
 	tmp = *new;
-	while (tmp)
+	while (tmp && *modifications)
 	{
 		if (!ft_strcmp((*modifications)->var_name, tmp->var_name))
 		{
@@ -42,15 +42,19 @@ void	modify_existing_var(t_data **modifications, t_data **new)
 	}
 }
 
-void	modify_specific_variables(t_data **new, t_data *modifications)
+void	modify_specific_variables(t_data **new, t_data **modifications)
 {
-	while (modifications)
+	while (*modifications)
 	{
-		modify_existing_var(&modifications, new);
-		modifications = modifications->next;
+		modify_existing_var(modifications, new);
+		if (*modifications)
+			*modifications = (*modifications)->next;
 	}
-	if (modifications)
-		add_new_var(&modifications, new);
+	if (*modifications)
+	{
+		ft_putendl("modifs est une variable inexistante dans env");
+		add_new_var(modifications, new);
+	}
 }
 
 t_data	*get_modifications(char **env_args)
@@ -92,14 +96,14 @@ t_data	*copy_env(t_data *data)
 	return (new_env);
 }
 
-t_data	*modify_env(t_data *data)
+t_data	*create_modified_env(t_data *data)
 {
 	t_data	*new_env;
 	t_data	*modifications;
 
 	new_env = copy_env(data);
 	modifications = get_modifications(data->args);
-	modify_specific_variables(&new_env, modifications);
+	modify_specific_variables(&new_env, &modifications);
 	if (modifications)
 		delete_list(&modifications);
 	return (new_env);

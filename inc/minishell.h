@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/02 21:12:47 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/03 09:32:57 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ int					ft_exit(t_data *data);
 ** ft_env.c
 */
 
-void				get_utility(t_data **new_env, t_data *data);
+char				**get_utility(char **args);
+void				get_args(t_data **new_env, t_data *data);
+void				modify_env(t_data *data);
 int					ft_env(t_data *data);
 
 /*
@@ -97,7 +99,8 @@ int					search_command_in_path(t_data *data, char *path);
 ** path.c
 */
 
-int					check_permission(char *file_name, char *full_path, char *command);
+int					check_permission(char *file_name,
+					char *full_path, char *command);
 int					command_is_find(char *file_path, char *command, char *dir);
 char				*get_command(char *command, char **directories);
 char				*get_path(t_data *data);
@@ -126,17 +129,25 @@ char				**create_env_array(t_data *data);
 
 void				add_new_var(t_data **modifications, t_data **new);
 void				modify_existing_var(t_data **modifications, t_data **new);
-void				modify_specific_variables(t_data **new, t_data *modifications);
+void				modify_specific_variables(t_data **new,
+					t_data **modifications);
 t_data				*get_modifications(char **env_args);
 t_data				*copy_data(t_data *data);
 t_data				*copy_env(t_data *data);
-t_data				*modify_env(t_data *data);
+t_data				*create_modified_env(t_data *data);
 
 /*
 ** display.c
 */
 
 void				display_prompt(void);
+void				display_env_variables(t_data *data);
+void				display_env_list(t_data *data);
+
+/*
+** display_test_functions.c
+*/
+
 void				print_char_array(char **target);
 void				print_data(t_data *data);
 void				print_list(t_data *list);

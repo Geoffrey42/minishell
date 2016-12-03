@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 16:05:33 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/02 20:27:58 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/03 08:29:42 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	delete_this_cell(t_data **list)
 		next = del->next;
 		delete_data(&del);
 		free(del);
+		del = NULL;
 		*list = next;
 	}
 }

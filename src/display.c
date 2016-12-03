@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/15 09:58:29 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/01 15:10:44 by ggane            ###   ########.fr       */
+/*   Created: 2016/12/03 07:32:11 by ggane             #+#    #+#             */
+/*   Updated: 2016/12/03 07:38:35 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,43 +17,18 @@ void	display_prompt(void)
 	ft_putstr("$> ");
 }
 
-void	print_char_array(char **target)
+void	display_env_variables(t_data *data)
 {
-	int		i;
-
-	i = 0;
-	ft_putendl("*******");
-	while (target[i])
-	{
-		ft_putendl(target[i]);
-		i++;
-	}
-	ft_putendl("*******");
-}
-
-void	print_data(t_data *data)
-{
-	ft_putstr("data : [");
 	ft_putstr(data->var_name);
-	ft_putstr("] [");
-	ft_putstr(data->var_content);
-	ft_putendl("]");
+	ft_putchar('=');
+	ft_putendl(data->var_content);
 }
 
-void	print_list(t_data *list)
+void	display_env_list(t_data *data)
 {
-	int		i;
-
-	i = 0;
-	ft_putendl("---------");
-	while (list)
+	while (data)
 	{
-		print_data(list);
-		i++;
-		list = list->next;
+		display_env_variables(data);
+		data = data->next;
 	}
-	ft_putstr("la liste a ");
-	ft_putnbr(i);
-	ft_putendl(" elements.");
-	ft_putendl("---------");
 }

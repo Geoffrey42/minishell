@@ -6,32 +6,57 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:26:16 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/02 21:12:23 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/03 09:55:17 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	get_utility(t_data **new_env, t_data *data)
+char	**get_utility(char **args)
+{
+	char	**utility;
+	int		i;
+
+	i = 1;
+	utility = NULL;
+	while (args[i])
+	{
+		if (args[i][0] != '-' && !ft_strchr(args[i], '='))	
+			utility = copy_array_str(args + i);
+		i++;
+	}
+	return (utility);
+}
+
+void	get_args(t_data **new_env, t_data *data)
 {
 	t_data	*tmp;
 
 	tmp = *new_env;
 	while (tmp)
 	{
-		tmp->args = copy_array_str(data->args);
-		tmp->ac = data->ac; 
+		tmp->args = get_utility(data->args);
+		tmp->ac = args_number(tmp->args); 
 		tmp = tmp->next;
 	}
 }
 
-int		ft_env(t_data *data)
+void	modify_env(t_data *data)
 {
 	t_data	*new_env;
 
-	new_env = modify_env(data);
-	get_utility(&new_env, data);
-	check_if_builtin(new_env);
+	new_env = create_modified_env(data);
+	get_args(&new_env, data);
+	if (new_env->args)
+		check_if_builtin(new_env);
 	delete_list(&new_env);
+}
+
+int		ft_env(t_data *data)
+{
+	if (data->ac == 1)
+		display_env_list(data);
+	else
+		modify_env(data);
 	return (0);
 }
