@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:59:44 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/03 07:44:45 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/06 22:40:01 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@ int		args_number(char **args)
 	int		i;
 
 	i = 0;
-	while (args[i])
-		i++;
+	if (args)
+		while (args[i])
+			i++;
 	return (i);
 }
 
