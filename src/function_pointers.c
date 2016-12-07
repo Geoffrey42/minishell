@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_setenv.c                                        :+:      :+:    :+:   */
+/*   function_pointers.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/29 16:23:18 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/07 15:08:52 by ggane            ###   ########.fr       */
+/*   Created: 2016/12/07 15:22:33 by ggane             #+#    #+#             */
+/*   Updated: 2016/12/07 15:29:23 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		ft_setenv(t_data *data)
+int		check_dash_equals(char **args, int i)
 {
-	t_data	*ascii_env;
+	if (args[i][0] != '-' && ft_strchr(args[i], '='))
+		return (1);
+	return (0);
+}
 
-	ascii_env = NULL;
-	if (data->ac == 1)
-	{
-		ascii_env = copy_env(data);
-		merge_sort(&ascii_env);
-		display_env_list(ascii_env);
-	}
+int		check_dash_only(char **args, int i)
+{
+	if (args[i][0] != '-')
+		return (1);
 	return (0);
 }

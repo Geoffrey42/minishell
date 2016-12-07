@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:26:16 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/06 22:44:30 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/07 15:08:17 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**get_utility(char **args)
 	utility = NULL;
 	while (args[i])
 	{
-		if (args[i][0] != '-' && !ft_strchr(args[i], '='))	
+		if (args[i][0] != '-' && !ft_strchr(args[i], '='))
 			utility = copy_array_str(args + i);
 		i++;
 	}
@@ -36,12 +36,12 @@ void	get_args(t_data **new_env, t_data *data)
 	while (tmp)
 	{
 		tmp->args = get_utility(data->args);
-		tmp->ac = args_number(tmp->args); 
+		tmp->ac = args_number(tmp->args);
 		tmp = tmp->next;
 	}
 }
 
-void	modify_env(t_data *data)
+void	modify_temporary_env(t_data *data)
 {
 	t_data	*new_env;
 
@@ -57,6 +57,6 @@ int		ft_env(t_data *data)
 	if (data->ac == 1)
 		display_env_list(data);
 	else
-		modify_env(data);
+		modify_temporary_env(data);
 	return (0);
 }

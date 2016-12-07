@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/03 09:32:57 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/07 15:31:24 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int					ft_exit(t_data *data);
 
 char				**get_utility(char **args);
 void				get_args(t_data **new_env, t_data *data);
-void				modify_env(t_data *data);
+void				modify_temporary_env(t_data *data);
 int					ft_env(t_data *data);
 
 /*
@@ -68,6 +68,21 @@ int					ft_setenv(t_data *data);
 */
 
 int					ft_unsetenv(t_data *data);
+
+/*
+** function_pointers.c
+*/
+
+int					check_dash_equals(char **args, int i);
+int					check_dash_only(char **args, int i);
+
+/*
+** merge_sort.c
+*/
+
+t_data				*merge_lists(t_data *a, t_data *b);
+void				partition(t_data *head, t_data **front, t_data **back);
+void				merge_sort(t_data **source);
 
 /*
 ** minishell.c
