@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:26:16 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/07 15:08:17 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/07 22:41:09 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		ft_env(t_data *data)
 {
 	if (data->ac == 1)
 		display_env_list(data);
-	else
+	else if (data->ac > 1 && check_env_errors(data))
 		modify_temporary_env(data);
 	return (0);
 }

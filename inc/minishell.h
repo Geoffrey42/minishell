@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/07 19:26:00 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/07 22:41:52 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ typedef struct		s_data
 	int				ac;
 	struct s_data	*next;
 }					t_data;
-
-typedef int			(*t_check)(char **, int);
 
 /*
 ** ft_cd.c
@@ -155,6 +153,12 @@ t_data				*copy_env(t_data *data);
 t_data				*create_modified_env(t_data *data);
 
 /*
+** check_builtins_errors.c
+*/
+
+int					check_env_errors(t_data *data);
+
+/*
 ** display.c
 */
 
@@ -171,7 +175,7 @@ void				print_data(t_data *data);
 void				print_list(t_data *list);
 
 /*
-** display_errors.c
+** display_errors_1.c
 */
 
 void				print_invalid_identifier(char *invalid, char *builtin);
@@ -179,6 +183,12 @@ void				print_oldpwd_not_set(void);
 void				print_permission_denied(char *source, char *target);
 int					print_command_not_found(char *source, char *target);
 void				print_no_such_file_or_dir(char *source, char *target);
+
+/*
+** display_errors_2.c
+*/
+
+void				print_illegal_option(char *builtin, char option);
 
 /*
 ** delete.c
