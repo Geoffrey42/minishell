@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 16:44:24 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/07 15:37:09 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/07 19:55:06 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,23 @@ void	modify_specific_variables(t_data **new, t_data **modifications)
 		add_new_var(modifications, new);
 }
 
-t_data	*get_modifications(char **env_args)
+void	add_var_to_list(t_data **modifications, char *env)
+{
+	char	*copy;
+	char	*del;
+
+	copy = ft_strdup(env);
+	del = copy;
+	if (!ft_strchr(copy, '='))
+	{
+		copy = ft_strjoin(copy, "=");
+		ft_strdel(&del);
+	}
+	list_push_back(modifications, parse_env(copy));
+	ft_strdel(&copy);
+}
+
+t_data	*get_modifications(char **env_args, int (*check)(char **, int))
 {
 	t_data	*modifications;
 	int		i;
@@ -66,8 +82,8 @@ t_data	*get_modifications(char **env_args)
 	i = 0;
 	while (env_args[i])
 	{
-		if (env_args[i][0] != '-' && ft_strchr(env_args[i], '='))
-			list_push_back(&modifications, parse_env(env_args[i]));
+		if (check(env_args, i))
+			add_var_to_list(&modifications, env_args[i]);
 		i++;
 	}
 	return (modifications);

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/07 15:31:24 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/07 19:26:00 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct		s_data
 	int				ac;
 	struct s_data	*next;
 }					t_data;
+
+typedef int			(*t_check)(char **, int);
 
 /*
 ** ft_cd.c
@@ -146,7 +148,8 @@ void				add_new_var(t_data **modifications, t_data **new);
 void				modify_existing_var(t_data **modifications, t_data **new);
 void				modify_specific_variables(t_data **new,
 					t_data **modifications);
-t_data				*get_modifications(char **env_args);
+t_data				*get_modifications(char **env_args,
+					int (*check)(char **, int));
 t_data				*copy_data(t_data *data);
 t_data				*copy_env(t_data *data);
 t_data				*create_modified_env(t_data *data);
