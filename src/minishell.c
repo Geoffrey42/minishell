@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:59:44 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/06 23:13:40 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/08 17:11:15 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	**create_builtins_array(void)
 	return (ft_strsplit("cd,echo,exit,env,setenv,unsetenv", ','));
 }
 
-int		check_if_builtin(t_data *data)
+int		execute_command(t_data *data)
 {
 	static int	(*execute_builtin[])(t_data *) = {BUILTINS};
 	char		**builtins;
@@ -25,7 +25,7 @@ int		check_if_builtin(t_data *data)
 
 	i = 0;
 	if (!data->args[0])
-		return (1);
+		return (-1);
 	builtins = create_builtins_array();
 	while (builtins[i])
 	{
@@ -63,7 +63,7 @@ int		minishell(t_data *data)
 		data->args = ft_strsplit(line, ' ');
 		data->ac = args_number(data->args);
 		ft_strdel(&line);
-		check_if_builtin(data);
+		execute_command(data);
 		erase_char_array(&data->args);
 	}
 	return (0);

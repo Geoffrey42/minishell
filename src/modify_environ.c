@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 16:44:24 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/07 19:55:06 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/08 17:25:11 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	add_var_to_list(t_data **modifications, char *env)
 	ft_strdel(&copy);
 }
 
-t_data	*get_modifications(char **env_args, int (*check)(char **, int))
+t_data	*get_modifications(char **env_args, int (*check)(char *))
 {
 	t_data	*modifications;
 	int		i;
@@ -82,7 +82,7 @@ t_data	*get_modifications(char **env_args, int (*check)(char **, int))
 	i = 0;
 	while (env_args[i])
 	{
-		if (check(env_args, i))
+		if (check(env_args[i]))
 			add_var_to_list(&modifications, env_args[i]);
 		i++;
 	}
@@ -116,10 +116,10 @@ t_data	*create_modified_env(t_data *data)
 {
 	t_data	*new_env;
 	t_data	*modifications;
-	int		(*check)(char **, int);
+	int		(*check)(char *);
 
 	new_env = copy_env(data);
-	check = &check_dash_equals;
+	check = &check_dash_and_equal;
 	modifications = get_modifications(data->args, check);
 	modify_specific_variables(&new_env, &modifications);
 	if (modifications)

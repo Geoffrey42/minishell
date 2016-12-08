@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/07 22:41:52 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/08 17:57:05 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,9 @@ int					ft_unsetenv(t_data *data);
 ** function_pointers.c
 */
 
-int					check_dash_equals(char **args, int i);
-int					check_dash_only(char **args, int i);
+int					check_dash_and_equal(char *args);
+int					check_dash_or_equal(char *args);
+int					check_dash_only(char *args);
 
 /*
 ** merge_sort.c
@@ -89,7 +90,7 @@ void				merge_sort(t_data **source);
 */
 
 char				**create_builtins_array(void);
-int					check_if_builtin(t_data *data);
+int					execute_command(t_data *data);
 int					args_number(char **args);
 int					minishell(t_data *data);
 
@@ -153,9 +154,12 @@ t_data				*copy_env(t_data *data);
 t_data				*create_modified_env(t_data *data);
 
 /*
-** check_builtins_errors.c
+** check_env_errors.c
 */
 
+int					check_extern_commands(char *args);
+int					check_builtins(char *args);
+int					check_executable(char *args);
 int					check_env_errors(t_data *data);
 
 /*

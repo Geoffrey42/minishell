@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2016/12/07 22:19:15 by ggane            ###   ########.fr        #
+#    Updated: 2016/12/08 17:47:47 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC= src/main.c \
 	 src/delete.c \
 	 src/display.c \
 	 src/display_test_functions.c \
-	 src/check_builtins_errors.c \
+	 src/check_env_errors.c \
 	 src/display_errors_1.c \
 	 src/display_errors_2.c \
 	 src/create_environ.c \
