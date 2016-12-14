@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 15:22:33 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/08 17:24:56 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/14 10:48:30 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		check_dash_and_equal(char *args)
 
 int		check_dash_or_equal(char *args)
 {
-	if (args[0] != '-' || ft_strchr(args, '='))
+	if (args[0] == '-' || !ft_strchr(args, '='))
 		return (1);
 	return (0);
 }
