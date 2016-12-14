@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 17:46:33 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/14 10:48:02 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/14 10:55:56 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,21 @@ int		check_executable(t_data *data, char *args)
 	return (0);
 }
 
+int		check_each_args(t_data *data, char *args)
+{
+	if (args[0] != '-' && !ft_strchr(args, '='))
+	{
+		if (!check_executable(data, args))
+			return (1);
+		else
+		{
+			ft_putendl_fd("error", 2);
+			return (0);
+		}
+	}
+	return (1);
+}
+
 int		check_env_errors(t_data *data)
 {
 	int		i;
@@ -68,16 +83,8 @@ int		check_env_errors(t_data *data)
 	i = 1;
 	while (data->args[i])
 	{
-		if (data->args[i][0] != '-' && !ft_strchr(data->args[i], '='))
-		{
-			if (!check_executable(data, data->args[i]))
-				return (1);
-			else
-			{
-				ft_putendl_fd("error", 2);
-				return (0);
-			}
-		}
+		if (!check_each_args(data, data->args[i]))
+			return (0);
 		i++;
 	}
 	return (1);

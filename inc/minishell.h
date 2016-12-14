@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/13 16:23:37 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/14 11:26:34 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,14 @@ char				**create_env_array(t_data *data);
 ** modify_environ_1.c
 */
 
+t_data				*copy_data(t_data *data);
+t_data				*copy_env(t_data *data);
+t_data				*create_modified_env(t_data *data);
+
+/*
+** modify_environ_2.c
+*/
+
 void				add_new_var(t_data **modifications, t_data **new);
 void				modify_existing_var(t_data **modifications, t_data **new);
 void				modify_specific_variables(t_data **new,
@@ -152,20 +160,13 @@ t_data				*get_modifications(char **env_args,
 					int (*check)(char *));
 
 /*
-** modify_environ_2.c
-*/
-
-t_data				*copy_data(t_data *data);
-t_data				*copy_env(t_data *data);
-t_data				*create_modified_env(t_data *data);
-
-/*
 ** check_env_errors.c
 */
 
 int					check_extern_commands(t_data *data, char *args);
 int					check_builtins(char *args);
 int					check_executable(t_data *data, char *args);
+int					check_each_args(t_data *data, char *args);
 int					check_env_errors(t_data *data);
 
 /*

@@ -5,47 +5,91 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/13 16:18:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/13 16:20:03 by ggane            ###   ########.fr       */
+/*   Created: 2016/12/14 11:23:05 by ggane             #+#    #+#             */
+/*   Updated: 2016/12/14 12:14:08 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_data	*copy_data(t_data *data)
+//void	add_new_var(t_data **modifications, t_data **new)
+void	add_new_var(t_data **modifications, t_data **new)
 {
-	t_data	*copy;
+	t_data	*tmp_new;
+	t_data	*tmp_modifs;
 
-	copy = create_elem();
-	copy->var_name = ft_strdup(data->var_name);
-	copy->var_content = ft_strdup(data->var_content);
-	return (copy);
-}
-
-t_data	*copy_env(t_data *data)
-{
-	t_data		*new_env;
-
-	new_env = NULL;
-	while (data)
+	tmp_new = *new;
+	tmp_modifs = *modifications;
+	while (tmp_modifs)
 	{
-		list_push_back(&new_env, copy_data(data));
-		data = data->next;
+		list_push_back(&tmp_new, tmp_modifs);
+		tmp_modifs = tmp_modifs->next;
+		//delete_this_cell(modifications);
 	}
-	return (new_env);
 }
 
-t_data	*create_modified_env(t_data *data)
+void	modify_existing_var(t_data **modifications, t_data **new)
 {
-	t_data	*new_env;
-	t_data	*modifications;
-	int		(*check)(char *);
+	t_data	*tmp_new;
 
-	new_env = copy_env(data);
-	check = &check_dash_and_equal;
-	modifications = get_modifications(data->args, check);
-	modify_specific_variables(&new_env, &modifications);
-	if (modifications)
-		delete_list(&modifications);
-	return (new_env);
+	tmp_new = *new;
+	while (tmp_new)
+	{
+		if (!*modifications)
+			return ;
+		if (!ft_strcmp((*modifications)->var_name, tmp_new->var_name))
+		{
+			ft_strdel(&tmp_new->var_content);
+			tmp_new->var_content = ft_strdup((*modifications)->var_content);
+			delete_this_cell(modifications);
+		}
+		tmp_new = tmp_new->next;
+	}
+}
+
+void	modify_specific_variables(t_data **new, t_data **modifications)
+{
+	t_data	*tmp_modifs;
+
+	tmp_modifs = *modifications;
+	while (tmp_modifs)
+	{
+		modify_existing_var(modifications, new);
+		if (tmp_modifs)
+			tmp_modifs = tmp_modifs->next;
+	}
+	//if (*modifications)
+	//	add_new_var(modifications, new);
+}
+
+void	add_var_to_list(t_data **modifications, char *env)
+{
+	char	*copy;
+	char	*del;
+
+	copy = ft_strdup(env);
+	del = copy;
+	if (!ft_strchr(copy, '='))
+	{
+		copy = ft_strjoin(copy, "=");
+		ft_strdel(&del);
+	}
+	list_push_back(modifications, parse_env(copy));
+	ft_strdel(&copy);
+}
+
+t_data	*get_modifications(char **env_args, int (*check)(char *))
+{
+	t_data	*modifications;
+	int		i;
+
+	modifications = NULL;
+	i = 0;
+	while (env_args[i])
+	{
+		if (check(env_args[i]))
+			add_var_to_list(&modifications, env_args[i]);
+		i++;
+	}
+	return (modifications);
 }
