@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/03 07:31:07 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/14 11:14:40 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/14 13:57:33 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	print_char_array(char **target)
 
 void	print_data(t_data *data)
 {
-	ft_putstr("\t\tdata : [");
+	ft_putstr("data : [");
 	ft_putstr(data->var_name);
 	ft_putstr("] [");
 	ft_putstr(data->var_content);
@@ -40,15 +40,15 @@ void	print_list(t_data *list)
 	int		i;
 
 	i = 0;
-	ft_putendl("\t\t---------");
+	ft_putendl("---------");
 	while (list)
 	{
 		print_data(list);
 		i++;
 		list = list->next;
 	}
-	ft_putstr("\t\tla liste a ");
+	ft_putstr("la liste a ");
 	ft_putnbr(i);
 	ft_putendl(" elements.");
-	ft_putendl("\t\t---------");
+	ft_putendl("---------");
 }

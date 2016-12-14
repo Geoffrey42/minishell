@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 11:22:54 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/14 12:14:26 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/14 14:02:03 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,24 @@ t_data	*create_modified_env(t_data *data)
 	int		(*check)(char *);
 
 	new_env = copy_env(data);
-	ft_putendl("\t\tnew_env");
+	ft_putendl("new_env (avant modifs)");
 	print_list(new_env);
 	check = &check_dash_and_equal;
 	modifications = get_modifications(data->args, check);
-	ft_putendl("\t\tmodifications");
+	ft_putendl("modifications (avant modifs)");
 	print_list(modifications);
-	ft_putendl("\t\t---------------------------------------------------------");
+	ft_putendl("---------------------------------------------------------");
 	modify_specific_variables(&new_env, &modifications);
-	ft_putendl("\t\tmodify_specific_variables() ok");
+	ft_putendl("modify_specific_variables() ok");
 	if (modifications)
 	{
-		ft_putendl("\t\tmodifications non nulle");
-		//add_new_var(&modifications, &new_env);
+		ft_putendl("modifications non nulle");
 		add_new_var(modifications, &new_env);
-		ft_putendl("\t\tadd_new_var() ok");
+		ft_putendl("add_new_var() ok");
 	}
-	ft_putendl("\t\tnew_env (apres modifs)");
+	ft_putendl("new_env (apres modifs)");
 	print_list(new_env);
-	ft_putendl("\t\tmodifications (apres modifs)");
+	ft_putendl("modifications (apres modifs)");
 	print_list(modifications);
 	if (modifications)
 		delete_list(&modifications);
