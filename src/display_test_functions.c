@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/03 07:31:07 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/14 13:57:33 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/15 09:22:58 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	print_list(t_data *list)
 		print_data(list);
 		i++;
 		list = list->next;
+		if (i == 100)
+			break ;
 	}
 	ft_putstr("la liste a ");
 	ft_putnbr(i);

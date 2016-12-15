@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/14 15:27:44 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/15 11:02:55 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,10 +152,8 @@ t_data				*create_modified_env(t_data *data);
 ** modify_environ_2.c
 */
 
-//void				add_new_var(t_data **modifications, t_data **new);
 void				add_new_var(t_data *modifications, t_data **new);
-//void				modify_existing_var(t_data **modifications, t_data **new);
-void				modify_existing_var(t_data *modifications, t_data **new);
+void				modify_existing_var(t_data **modifications, t_data **new);
 void				modify_specific_variables(t_data **new,
 					t_data **modifications);
 void				add_var_to_list(t_data **modifications, char *env);

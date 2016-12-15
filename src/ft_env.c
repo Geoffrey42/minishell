@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:26:16 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/14 14:04:22 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/15 10:54:13 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	modify_temporary_env(t_data *data)
 
 	new_env = create_modified_env(data);
 	get_args(&new_env, data);
-	/*if (new_env->args)
-		execute_command(new_env);*/
+	if (new_env->args)
+		execute_command(new_env);
 	delete_list(&new_env);
 }
 

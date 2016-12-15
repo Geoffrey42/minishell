@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 11:22:54 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/14 14:02:03 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/15 10:53:57 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,11 @@ t_data	*create_modified_env(t_data *data)
 	int		(*check)(char *);
 
 	new_env = copy_env(data);
-	ft_putendl("new_env (avant modifs)");
-	print_list(new_env);
 	check = &check_dash_and_equal;
 	modifications = get_modifications(data->args, check);
-	ft_putendl("modifications (avant modifs)");
-	print_list(modifications);
-	ft_putendl("---------------------------------------------------------");
 	modify_specific_variables(&new_env, &modifications);
-	ft_putendl("modify_specific_variables() ok");
 	if (modifications)
-	{
-		ft_putendl("modifications non nulle");
 		add_new_var(modifications, &new_env);
-		ft_putendl("add_new_var() ok");
-	}
-	ft_putendl("new_env (apres modifs)");
-	print_list(new_env);
-	ft_putendl("modifications (apres modifs)");
-	print_list(modifications);
 	if (modifications)
 		delete_list(&modifications);
 	return (new_env);

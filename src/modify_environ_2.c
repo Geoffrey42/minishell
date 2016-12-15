@@ -6,13 +6,12 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 11:23:05 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/14 15:22:33 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/15 10:51:50 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-//void	add_new_var(t_data **modifications, t_data **new)
 void	add_new_var(t_data *modifications, t_data **new)
 {
 	t_data	*tmp_modifs;
@@ -22,45 +21,27 @@ void	add_new_var(t_data *modifications, t_data **new)
 	{
 		list_push_back(new, copy_data(tmp_modifs));
 		tmp_modifs = tmp_modifs->next;
-		//delete_this_cell(modifications);
 	}
 }
 
-//void	modify_existing_var(t_data **modifications, t_data **new)
-void	modify_existing_var(t_data *modifications, t_data **new)
+void	modify_existing_var(t_data **modifications, t_data **new)
 {
 	t_data	*tmp_new;
 
 	tmp_new = *new;
 	while (tmp_new)
 	{
-		//if (!*modifications)
-		if (!modifications)
+		if (!*modifications)
 			return ;
-		ft_putendl("******************************************");
-		ft_putstr("modif->var_name : ");
-		//ft_putendl((*modifications)->var_name);
-		ft_putendl(modifications->var_name);
-		ft_putstr("new->var_name : ");
-		ft_putendl(tmp_new->var_name);
-		//if (!ft_strcmp((*modifications)->var_name, tmp_new->var_name))
-		if (!ft_strcmp(modifications->var_name, tmp_new->var_name))
+		if (!ft_strcmp((*modifications)->var_name, tmp_new->var_name))
 		{
-			ft_putendl("MATCH !!!!");
 			ft_strdel(&tmp_new->var_content);
-			//tmp_new->var_content = ft_strdup((*modifications)->var_content);
-			tmp_new->var_content = ft_strdup(modifications->var_content);
-			//delete_this_cell(modifications);
-			delete_this_cell(&modifications);
-			ft_putendl("modifications (durant modifs)");
-			print_list(modifications);
+			tmp_new->var_content = ft_strdup((*modifications)->var_content);
+			delete_this_cell(modifications);
 			return ;
 		}
 		tmp_new = tmp_new->next;
 	}
-	ft_putendl("modifications (durant modifs)");
-	//print_list(*modifications);
-	print_list(modifications);
 }
 
 void	modify_specific_variables(t_data **new, t_data **modifications)
@@ -70,12 +51,16 @@ void	modify_specific_variables(t_data **new, t_data **modifications)
 	tmp_modifs = *modifications;
 	while (tmp_modifs)
 	{
-		modify_existing_var(tmp_modifs, new);
-		//if (tmp_modifs)
-		tmp_modifs = tmp_modifs->next;
+		modify_existing_var(&tmp_modifs, new);
+		if (tmp_modifs && tmp_modifs->next)
+			tmp_modifs = tmp_modifs->next;
+		else
+			break ;
 	}
-	//if (*modifications)
-	//	add_new_var(modifications, new);
+	if (tmp_modifs)
+		while (tmp_modifs->prev)
+			tmp_modifs = tmp_modifs->prev;
+	*modifications = tmp_modifs;
 }
 
 void	add_var_to_list(t_data **modifications, char *env)

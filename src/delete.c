@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 16:05:33 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/14 15:34:11 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/15 10:58:09 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,19 @@ void	delete_this_cell(t_data **list)
 		next = del->next;
 		prev = del->prev;
 		delete_data(&del);
-		free(del);
-		del = NULL;
-		*list = next;
-		prev->next = *list;
-		(*list)->prev = prev;
+		ft_memdel((void **)&del);
+		if (prev)
+		{
+			*list = prev;
+			(*list)->next = next;
+			next->prev = *list;
+		}
+		else
+		{
+			*list = next;
+			if (*list)
+				(*list)->prev = prev;
+		}
 	}
 }
 

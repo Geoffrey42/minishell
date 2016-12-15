@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 17:46:33 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/14 10:55:56 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/15 11:10:52 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int		check_extern_commands(t_data *data, char *args)
 {
 	char	**directories;
 	char	*path;
+	char	*command;
 	int		status;
 
 	path = NULL;
@@ -23,11 +24,13 @@ int		check_extern_commands(t_data *data, char *args)
 	if (!check_if_environ_is_empty(data))
 		path = get_path(data);
 	directories = ft_strsplit(path, ':');
+	command = get_command(args, directories);
 	if (ft_strchr(args, '/') && access(args, F_OK))
 		status = 1;
-	else if (!ft_strchr(args, '/') && get_command(args, directories))
+	else if (!ft_strchr(args, '/') && command)
 		status = 1;
 	ft_strdel(&path);
+	ft_strdel(&command);
 	erase_char_array(&directories);
 	return (status);
 }
