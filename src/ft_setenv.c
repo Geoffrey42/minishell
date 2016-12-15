@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:23:18 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/15 13:56:23 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/15 14:28:12 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,15 @@ void	modify_permanent_env(t_data **data)
 int		ft_setenv(t_data *data)
 {
 	t_data	*ascii_env;
+	void	(*display)(t_data *);
 
 	ascii_env = NULL;
+	display = &display_setenv_variables;
 	if (data->ac == 1)
 	{
 		ascii_env = copy_env(data);
 		merge_sort(&ascii_env);
-		display_env_list(ascii_env);
+		display_env_list(ascii_env, display);
 		delete_list(&ascii_env);
 	}
 	else if (data->ac > 1 && check_setenv_errors(data))

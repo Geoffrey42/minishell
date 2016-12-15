@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/15 13:24:53 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/15 14:28:39 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,8 +185,9 @@ int					check_env_errors(t_data *data);
 */
 
 void				display_prompt(void);
+void				display_setenv_variables(t_data *data);
 void				display_env_variables(t_data *data);
-void				display_env_list(t_data *data);
+void				display_env_list(t_data *data, void (*display)(t_data *));
 
 /*
 ** display_test_functions.c

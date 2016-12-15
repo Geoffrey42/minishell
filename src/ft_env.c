@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:26:16 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/15 12:44:43 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/15 14:26:09 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,12 @@ void	modify_temporary_env(t_data *data, t_data **new_env)
 int		ft_env(t_data *data)
 {
 	t_data	*new_env;
+	void	(*display)(t_data *);
 
 	new_env = NULL;
+	display = &display_env_variables;
 	if (data->ac == 1)
-		display_env_list(data);
+		display_env_list(data, display);
 	else if (data->ac > 1 && check_env_errors(data))
 	{
 		modify_temporary_env(data, &new_env);
