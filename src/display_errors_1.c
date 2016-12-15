@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 22:21:32 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/07 22:21:34 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/15 21:12:51 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ void	print_no_such_file_or_dir(char *source, char *target)
 {
 	ft_putstr_fd(source, 2);
 	ft_putstr_fd(": no such file or directory: ", 2);
-	ft_putendl_fd(target, 2);
+	if (target)
+		ft_putendl_fd(target, 2);
 }

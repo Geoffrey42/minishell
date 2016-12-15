@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 11:22:54 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/15 18:24:09 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/15 21:20:27 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,31 +51,4 @@ t_data	*create_modified_env(t_data *data)
 		delete_list(&modifications);
 	}
 	return (new_env);
-}
-
-char	*extract_name(char *var)
-{
-	char	*name;
-
-	name = (char *)ft_memalloc(len_till_c(var, '=') + 1);
-	name = ft_strcpy(name, var);
-	return (name);
-}
-
-void	add_var_directly(t_data **data, char *var)
-{
-	t_data	*tmp;
-
-	tmp = *data;
-	while (tmp)
-	{
-		if (!(ft_strcmp(tmp->var_name, extract_name(var))))
-		{
-			ft_strdel(&tmp->var_content);
-			tmp->var_content = extract_content(var);
-			return ;
-		}
-		tmp = tmp->next;
-	}
-	list_push_back(data, parse_env(var));
 }

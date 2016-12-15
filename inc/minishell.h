@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/15 15:28:30 by marvin           ###   ########.fr       */
+/*   Updated: 2016/12/15 21:21:39 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ typedef struct		s_data
 ** ft_cd.c
 */
 
+int					change_directory(char *dir, t_data *data);
+int					check_cd_access(t_data *data, char *dir);
+char				*go_to_previous_dir(t_data *data);
+char				*search_var(t_data *data, char *to_search);
 int					ft_cd(t_data *data);
 
 /*
@@ -164,6 +168,14 @@ void				modify_specific_variables(t_data **new,
 void				add_var_to_list(t_data **modifications, char *env);
 t_data				*get_modifications(char **env_args,
 					int (*check)(char *));
+
+/*
+** modify_environ_3.c
+*/
+
+char				*extract_content(char *var);
+char				*extract_name(char *var);
+void				add_var_directly(t_data **data, char *var);
 
 /*
 ** check_setenv_errors.c
