@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/15 14:28:39 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/15 15:28:30 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int					ft_setenv(t_data *data);
 ** ft_unsetenv.c
 */
 
+void				delete_var(t_data **data, t_data *modif);
+void				search_var_to_delete(t_data **data, t_data *modifications);
 int					ft_unsetenv(t_data *data);
 
 /*
