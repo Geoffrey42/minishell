@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 11:22:54 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/15 10:53:57 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/15 13:38:14 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,9 @@ t_data	*create_modified_env(t_data *data)
 	modifications = get_modifications(data->args, check);
 	modify_specific_variables(&new_env, &modifications);
 	if (modifications)
+	{
 		add_new_var(modifications, &new_env);
-	if (modifications)
 		delete_list(&modifications);
+	}
 	return (new_env);
 }

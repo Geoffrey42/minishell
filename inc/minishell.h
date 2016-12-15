@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/15 11:33:04 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/15 13:24:53 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int					ft_exit(t_data *data);
 
 char				**get_utility(char **args);
 void				get_args(t_data **new_env, t_data *data);
-void				modify_temporary_env(t_data *data);
+void				modify_temporary_env(t_data *data, t_data **new_env);
 int					ft_env(t_data *data);
 
 /*
@@ -76,6 +76,7 @@ int					ft_unsetenv(t_data *data);
 ** function_pointers.c
 */
 
+int					no_check(char *args);
 int					check_dash_and_equal(char *args);
 int					check_dash_or_equal(char *args);
 int					check_dash_only(char *args);
@@ -161,6 +162,13 @@ void				modify_specific_variables(t_data **new,
 void				add_var_to_list(t_data **modifications, char *env);
 t_data				*get_modifications(char **env_args,
 					int (*check)(char *));
+
+/*
+** check_setenv_errors.c
+*/
+
+int					check_alpha(char *arg);
+int					check_setenv_errors(t_data *data);
 
 /*
 ** check_env_errors.c
