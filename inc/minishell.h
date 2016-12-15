@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/15 11:02:55 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/15 11:33:04 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int					ft_cd(t_data *data);
 ** ft_echo.c
 */
 
+void				print_env_var(t_data *data, char *arg);
+void				print_message(t_data *data, char *arg);
 int					ft_echo(t_data *data);
 
 /*
