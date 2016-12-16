@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2016/12/15 21:20:43 by ggane            ###   ########.fr        #
+#    Updated: 2016/12/16 15:25:27 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRC= src/main.c \
 	 src/ft_setenv.c \
 	 src/ft_unsetenv.c \
 	 src/merge_sort.c \
+	 src/trim_args.c \
 	 src/function_pointers.c \
 	 src/delete.c \
 	 src/display.c \
