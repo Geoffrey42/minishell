@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:24:16 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/15 15:47:39 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/16 12:09:21 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ void	delete_var(t_data **data, t_data *modif)
 	{
 		if (!ft_strcmp(tmp->var_name, modif->var_name) &&
 			!ft_strlen(modif->var_content))
+		{
 			delete_this_cell(&tmp);
+		}
 		tmp = tmp->next;
 	}
 	*data = tmp;
