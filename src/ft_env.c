@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:26:16 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/15 14:26:09 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/16 11:30:08 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ char	**get_utility(char **args)
 	while (args[i])
 	{
 		if (args[i][0] != '-' && !ft_strchr(args[i], '='))
+		{
 			utility = copy_array_str(args + i);
+			return (utility);
+		}
 		i++;
 	}
 	return (utility);

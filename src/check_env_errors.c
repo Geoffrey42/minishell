@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 17:46:33 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/15 11:10:52 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/16 11:30:49 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ int		check_builtins(char *args)
 
 int		check_executable(t_data *data, char *args)
 {
-	if (check_builtins(args))
-		return (1);
-	if (!check_extern_commands(data, args))
-		return (1);
-	return (0);
+	if (!check_builtins(args))
+		return (0);
+	else if (check_extern_commands(data, args))
+		return (0);
+	return (1);
 }
 
 int		check_each_args(t_data *data, char *args)
@@ -76,18 +76,24 @@ int		check_each_args(t_data *data, char *args)
 			return (0);
 		}
 	}
-	return (1);
+	return (2);
 }
 
 int		check_env_errors(t_data *data)
 {
 	int		i;
+	int		ret;
 
 	i = 1;
+	ret = -1;
 	while (data->args[i])
 	{
-		if (!check_each_args(data, data->args[i]))
+		if (!(ret = check_each_args(data, data->args[i])))
 			return (0);
+		else if (ret == 1)
+		{
+			break ;
+		}
 		i++;
 	}
 	return (1);
