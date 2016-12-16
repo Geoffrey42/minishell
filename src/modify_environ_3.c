@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 21:20:10 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/15 21:20:21 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/16 08:49:01 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	add_var_directly(t_data **data, char *var)
 		if (!(ft_strcmp(tmp->var_name, name)))
 		{
 			ft_strdel(&tmp->var_content);
-			tmp->var_content = value;
+			tmp->var_content = ft_strdup(value);
 			ft_strdel(&name);
 			ft_strdel(&value);
 			return ;
