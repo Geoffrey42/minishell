@@ -1,1 +1,2 @@
-gcc -Wall -Wextra -Werror test02.c epur_str.c libft/libft.h
+gcc -Wall -Wextra -Werror epur_str.c test02.c libft/libft.a
+./a.out

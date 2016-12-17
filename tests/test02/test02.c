@@ -6,13 +6,15 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/17 12:02:42 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/17 12:41:48 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/17 15:28:57 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include <stdio.h> //to_delete
-#define SIZE 5
+#define SIZE 10
+
+char	*epur_str(char *raw);
 
 void	test_each_str(char **tests)
 {
@@ -21,16 +23,17 @@ void	test_each_str(char **tests)
 	int		test_nb;
 
 	i = 0;
-	while (*tests[i])
+	test_nb = 0;
+	while (tests[i])
 	{
-		epur = epur_str(*tests[i]);
-		if (!(ft_strcmp(epur, *tests[i + 1])))
-			printf("test %d ok\n", test_nb);
+		printf("test %d : [%s] ", test_nb, tests[i]);
+		epur = epur_str(tests[i]);
+		if (!(ft_strcmp(epur, tests[i + 1])))
+			printf("ok\n");
 		else
-		{
-			printf("test %d failed\n", test_nb);
-			printf("resultat epur_str [%s] different de [%s] attendu\n", epur, *tests[i + 1]);
-		}
+			printf("failed\n\nresultat epur_str [%s] de size %zu\ndifferent de [%s] attendu.\n", epur, ft_strlen(epur), tests[i + 1]);
+		printf("--------\n");
+		ft_strdel(&epur);
 		i += 2;
 		test_nb++;
 	}
@@ -38,6 +41,7 @@ void	test_each_str(char **tests)
 
 void	fill_with_tests(char ***tests)
 {
+	char	**tmp;
 	char	s1[] = { 'a', 'b', '\0'};
 	char	s2[] = { 'a', 'b', '\0'};
 	char	s3[] = { ' ', 'a', 'b', '\0'};
@@ -49,16 +53,17 @@ void	fill_with_tests(char ***tests)
 	char	s9[] = { ' ', '\t', ' ', '\t', '\t', 'a', '\t', ' ', 'b', '\t', ' ', '\t', '\t', '\0'};
 	char	s10[] = { 'a', ' ', 'b', '\0'};
 
-	*tests[0] = ft_strdup(s1);
-	*tests[1] = ft_strdup(s2);
-	*tests[2] = ft_strdup(s3);
-	*tests[3] = ft_strdup(s4);
-	*tests[4] = ft_strdup(s5);
-	*tests[5] = ft_strdup(s6);
-	*tests[6] = ft_strdup(s7);
-	*tests[7] = ft_strdup(s8);
-	*tests[8] = ft_strdup(s9);
-	*tests[9] = ft_strdup(s10);
+	tmp = *tests;
+	tmp[0] = ft_strdup(s1);
+	tmp[1] = ft_strdup(s2);
+	tmp[2] = ft_strdup(s3);
+	tmp[3] = ft_strdup(s4);
+	tmp[4] = ft_strdup(s5);
+	tmp[5] = ft_strdup(s6);
+	tmp[6] = ft_strdup(s7);
+	tmp[7] = ft_strdup(s8);
+	tmp[8] = ft_strdup(s9);
+	tmp[9] = ft_strdup(s10);
 }
 
 char	**allocate_memory(void)
@@ -75,8 +80,10 @@ int		main(void)
 {
 	char	**tests;
 
-	test = allocate_memory();
+	ft_putendl("start test02's unit tests\n");
+	tests = allocate_memory();
 	fill_with_tests(&tests);
 	test_each_str(tests);
+	ft_putendl("\nend test02");
 	return (0);
 }
