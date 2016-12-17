@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/03 07:31:07 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/15 09:22:58 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/16 14:09:12 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	print_char_array(char **target)
 	ft_putendl("*******");
 	while (target[i])
 	{
-		ft_putendl(target[i]);
+		ft_putchar('[');
+		ft_putstr(target[i]);
+		ft_putendl("]");
 		i++;
 	}
 	ft_putendl("*******");
