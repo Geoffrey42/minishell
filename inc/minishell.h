@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/15 21:21:39 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/16 15:26:07 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,4 +235,9 @@ void				delete_data(t_data **del);
 void				delete_this_cell(t_data **list);
 void				delete_list(t_data **list);
 
+/*
+** trim_args.c
+*/
+
+char				**trim_args(char **origin);
 #endif
