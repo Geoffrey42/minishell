@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/16 15:26:07 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/17 16:15:42 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,23 @@ char				**create_builtins_array(void);
 int					execute_command(t_data *data);
 int					args_number(char **args);
 int					minishell(t_data *data);
+
+/*
+** epur_str_1.c
+*/
+
+void				epur_raw(char **epur, char *raw);
+size_t				get_cumulative_words_length(char *raw);
+size_t				get_spaces_nb(char *raw);
+size_t				get_epur_size(char *raw);
+char				*epur_str(char *raw);
+
+/*
+** epur_str_2.c
+*/
+
+int					space_tab(char c);
+size_t				get_words_nb(char *raw);
 
 /*
 ** list_functions.c
