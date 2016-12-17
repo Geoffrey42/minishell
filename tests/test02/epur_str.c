@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/17 13:39:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/17 15:38:12 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/17 16:04:09 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static size_t	get_words_nb(char *raw)
 	i = 0;
 	while (raw[i])
 	{
-		if (!(space_tab(raw[i])) && space_tab(raw[i - 1]))
+		if (!(space_tab(raw[i])) && (space_tab(raw[i - 1]) || i == 0))
 			words_nb++;
 		i++;
 	}
@@ -52,15 +52,9 @@ static void		epur_raw(char **epur, char *raw)
 		if (!(space_tab(raw[i])) && space_tab(raw[i - 1]))
 			words_nb--;
 		if (!(space_tab(raw[i])))
-		{
-			tmp[j] = raw[i];
-			j++;
-		}
-		if (!(space_tab(raw[i])) && space_tab(raw[i + 1]) && words_nb != 1)
-		{
-			tmp[j] = ' ';
-			j++;
-		}
+			tmp[j++] = raw[i];
+		if (!(space_tab(raw[i])) && space_tab(raw[i + 1]) && words_nb != 0)
+			tmp[j++] = ' ';
 		i++;
 	}
 }
