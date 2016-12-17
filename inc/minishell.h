@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/17 16:15:42 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/17 16:46:36 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <dirent.h>
 # include <sys/types.h>
 # include <sys/wait.h>
+# include <signal.h>
 
 # define BUILTINS &ft_cd, &ft_echo, &ft_exit, &ft_env, &ft_setenv, &ft_unsetenv
 
@@ -252,9 +253,4 @@ void				delete_data(t_data **del);
 void				delete_this_cell(t_data **list);
 void				delete_list(t_data **list);
 
-/*
-** trim_args.c
-*/
-
-char				**trim_args(char **origin);
 #endif

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:59:44 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/17 16:20:30 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/17 16:52:05 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,11 @@ int		args_number(char **args)
 	return (i);
 }
 
+void	int_handler(int sig)
+{
+	signal(sig, SIG_IGN);
+}
+
 int		minishell(t_data *data)
 {
 	char	*line;
@@ -60,6 +65,7 @@ int		minishell(t_data *data)
 	while (1)
 	{
 		display_prompt();
+		signal(SIGINT, int_handler);
 		get_next_line(0, &line);
 		epur = epur_str(line);
 		data->args = ft_strsplit(epur, ' ');
