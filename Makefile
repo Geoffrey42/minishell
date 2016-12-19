@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2016/12/19 00:16:12 by ggane            ###   ########.fr        #
+#    Updated: 2016/12/19 09:20:32 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ OBJ= $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-		make -C libft/
+		make -C libft -j 8
 		$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -L libft/ -lft
 
 %.o: %.c

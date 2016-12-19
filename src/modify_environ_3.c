@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 21:20:10 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/16 08:49:01 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/19 13:55:03 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*extract_content(char *var)
 	int		equal;
 
 	equal = len_till_c(var, '=');
-	value = ft_strsub(var, equal + 1, ft_strlen(var));
+	value = ft_strsub(var, equal + 1, ft_strlen(var) - equal - 1);
 	return (value);
 }
 

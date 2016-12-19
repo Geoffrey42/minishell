@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/17 13:39:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/17 16:22:34 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/19 09:59:48 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	epur_raw(char **epur, char *raw)
 	j = 0;
 	while (raw[i] || tmp[j])
 	{
-		if (!(space_tab(raw[i])) && space_tab(raw[i - 1]))
+		if (!(space_tab(raw[i])) && (i > 0 && space_tab(raw[i - 1])))
 			words_nb--;
 		if (!(space_tab(raw[i])))
 			tmp[j++] = raw[i];

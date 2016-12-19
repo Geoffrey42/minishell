@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 17:33:06 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/17 23:19:29 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/19 13:58:44 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int		get_word_nb(char const *s, char c)
 	{
 		if (i == 0 && s[i] != c)
 			nb_mots++;
-		if (s[i] != c && s[i - 1] == c && i - 1 >= 0)
+		if (s[i] != c && (i > 0 && s[i - 1] == c))
 			nb_mots++;
 		i++;
 	}
@@ -90,7 +90,7 @@ char			**ft_strsplit(char const *s, char c)
 	i = 0;
 	ptr_s = (char *)s;
 	nb_mots = get_word_nb(s, c);
-	if (!(split = (char **)ft_memalloc(sizeof(char *) * nb_mots + 1)))
+	if (!(split = (char **)ft_memalloc(sizeof(*split) * (nb_mots + 1))))
 		return (NULL);
 	while (i < nb_mots)
 	{

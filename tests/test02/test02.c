@@ -6,13 +6,13 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/17 12:02:42 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/17 15:28:57 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/19 09:58:14 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include <stdio.h> //to_delete
-#define SIZE 10
+#define SIZE 12
 
 char	*epur_str(char *raw);
 
@@ -52,6 +52,8 @@ void	fill_with_tests(char ***tests)
 	char	s8[] = { 'a', ' ', 'b', '\0'};
 	char	s9[] = { ' ', '\t', ' ', '\t', '\t', 'a', '\t', ' ', 'b', '\t', ' ', '\t', '\t', '\0'};
 	char	s10[] = { 'a', ' ', 'b', '\0'};
+	char	s11[] = { 'a', ' ', 'b', '\t', ' ', 'c', '\t', ' ' ,'\0'};
+	char	s12[] = { 'a', ' ', 'b', ' ', 'c', '\0'};
 
 	tmp = *tests;
 	tmp[0] = ft_strdup(s1);
@@ -64,6 +66,8 @@ void	fill_with_tests(char ***tests)
 	tmp[7] = ft_strdup(s8);
 	tmp[8] = ft_strdup(s9);
 	tmp[9] = ft_strdup(s10);
+	tmp[10] = ft_strdup(s11);
+	tmp[11] = ft_strdup(s12);
 }
 
 char	**allocate_memory(void)

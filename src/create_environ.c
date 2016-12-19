@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 16:49:48 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/19 00:23:22 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/19 13:52:15 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	**create_env_array(t_data *data)
 	size_t	size;
 
 	size = list_size(data);
-	env = ft_memalloc(sizeof(char *) * size);
+	env = (char **)ft_memalloc(sizeof(char *) * (size + 1));
 	copy_each_cell(data, env);
 	return (env);
 }
