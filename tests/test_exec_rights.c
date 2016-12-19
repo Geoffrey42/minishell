@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   test_exec_rights.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/18 20:38:07 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/19 00:11:06 by ggane            ###   ########.fr       */
+/*   Created: 2016/12/17 17:19:31 by ggane             #+#    #+#             */
+/*   Updated: 2016/12/17 17:20:25 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+int		main(void)
 {
-	char			*sub;
-	unsigned int	i;
-
-	i = 0;
-	if (!s || !(sub = (char *)ft_memalloc(len + 1)))
-		return (NULL);
-	while (i < len)
-	{
-		sub[i] = s[start];
-		i++;
-		start++;
-	}
-	sub[i] = '\0';
-	return (sub);
+	write(1, "KO", 2);
+	return (0);
 }

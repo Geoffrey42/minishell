@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:20:54 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/01 15:03:04 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/17 23:11:28 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static char		*fill_stock(int fd, char *stock)
 	char		*del;
 	int			ret;
 
+	ft_bzero(buf, BUFF_SIZE + 1);
 	while (!ft_strchr(buf, '\n'))
 	{
 		if ((ret = read(fd, buf, BUFF_SIZE)) == -1)

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 18:50:01 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/11 02:37:10 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/18 00:01:34 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char		**allocate_memory(size_t size)
 {
 	char	**copy;
 
-	if (!(copy = (char **)malloc(sizeof(char *) * size)))
+	if (!(copy = (char **)ft_memalloc(sizeof(char *) * size)))
 		return (NULL);
 	return (copy);
 }

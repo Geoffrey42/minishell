@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 10:18:28 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/14 15:31:01 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/17 23:42:12 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_data	*create_elem(void)
 {
 	t_data	*new;
 
-	if (!(new = (t_data *)malloc(sizeof(t_data))))
+	if (!(new = (t_data *)ft_memalloc(sizeof(t_data))))
 		return (NULL);
 	new->var_name = NULL;
 	new->var_content = NULL;

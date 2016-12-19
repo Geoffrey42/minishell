@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/17 13:39:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/17 16:04:09 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/19 01:08:04 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,11 @@ static size_t	get_words_nb(char *raw)
 	i = 0;
 	while (raw[i])
 	{
-		if (!(space_tab(raw[i])) && (space_tab(raw[i - 1]) || i == 0))
-			words_nb++;
+		if (i - 1 >= 0)
+		{
+			if (!(space_tab(raw[i])) && (space_tab(raw[i - 1]) || i == 0))
+				words_nb++;
+		}
 		i++;
 	}
 	return (words_nb);
