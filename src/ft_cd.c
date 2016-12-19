@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 09:54:36 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/15 21:13:31 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/19 16:09:48 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ int		change_directory(char *dir, t_data *data)
 
 int		check_cd_access(t_data *data, char *dir)
 {
-	if (!(access(dir, F_OK)) && !(access(dir, X_OK)))
+	if (!dir)
+		ft_putendl_fd("cd : No such file or directory", 2);
+	else if (!(access(dir, F_OK)) && !(access(dir, X_OK)))
 		change_directory(dir, data);
 	else if (!(access(dir, F_OK)) && access(dir, X_OK))
 		print_permission_denied("cd", dir);
@@ -55,7 +57,7 @@ char	*search_var(t_data *data, char *to_search)
 	found = NULL;
 	while (data)
 	{
-		if (!ft_strcmp(data->var_name, to_search))
+		if (data->var_name && !ft_strcmp(data->var_name, to_search))
 			found = data->var_content;
 		data = data->next;
 	}
