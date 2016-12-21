@@ -6,13 +6,13 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 10:18:28 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/19 15:38:11 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/20 20:23:00 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	list_push_back(t_data **list, t_data *new)
+void			list_push_back(t_data **list, t_data *new)
 {
 	t_data	*tmp;
 
@@ -58,7 +58,7 @@ t_data	*create_env_list(char **env)
 	return (data);
 }
 
-size_t	list_size(t_data *data)
+size_t			list_size(t_data *data)
 {
 	size_t	size;
 

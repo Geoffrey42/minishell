@@ -6,13 +6,13 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 16:49:48 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/19 15:27:13 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/20 20:21:16 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		check_if_environ_is_empty(t_data *data)
+int				check_if_environ_is_empty(t_data *data)
 {
 	while (data)
 	{
@@ -23,7 +23,7 @@ int		check_if_environ_is_empty(t_data *data)
 	return (0);
 }
 
-t_data	*parse_env(char *env)
+t_data			*parse_env(char *env)
 {
 	t_data	*data;
 	int		equal;
@@ -35,14 +35,14 @@ t_data	*parse_env(char *env)
 	return (data);
 }
 
-char	*join_variables(t_data *data, char *env)
+char			*join_variables(t_data *data, char *env)
 {
 	env = ft_strjoin(data->var_name, "=");
 	env = ft_strjoin(env, data->var_content);
 	return (env);
 }
 
-void	copy_each_cell(t_data *data, char **env)
+void			copy_each_cell(t_data *data, char **env)
 {
 	int		i;
 
@@ -56,7 +56,7 @@ void	copy_each_cell(t_data *data, char **env)
 	env[i] = NULL;
 }
 
-char	**create_env_array(t_data *data)
+char			**create_env_array(t_data *data)
 {
 	char	**env;
 	size_t	size;
