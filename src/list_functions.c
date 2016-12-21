@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 10:18:28 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/21 16:06:23 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/21 18:08:51 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,13 @@ void	list_push_back(t_data **list, t_data *new)
 	t_data	*tmp;
 
 	tmp = NULL;
-	if (!*list || !(*list)->var_name)
+	if (!*list)
 		*list = new;
+	if (!(*list)->var_name)
+	{
+		delete_list(list);
+		*list = new;
+	}
 	else
 	{
 		tmp = *list;

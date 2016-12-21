@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/21 13:56:36 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/21 17:40:17 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ typedef struct		s_data
 ** ft_cd.c
 */
 
-int					change_directory(char *dir, t_data *data);
-int					check_cd_access(t_data *data, char *dir);
+int					change_directory(char *dir, t_data **data);
+int					check_cd_access(t_data **data, char *dir);
 char				*go_to_previous_dir(t_data *data);
 char				*search_var(t_data *data, char *to_search);
 int					ft_cd(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:23:18 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/21 14:41:12 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/21 17:56:13 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ void	modify_permanent_env(t_data **data)
 	modifications = get_modifications((*data)->args + 1, not_check);
 	modify_specific_variables(data, &modifications);
 	if (modifications)
-	{
-		//add_new_var(modifications, data);
 		delete_list(&modifications);
-	}
 }
 
 int		ft_setenv(t_data *data)
