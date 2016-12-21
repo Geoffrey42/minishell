@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/17 16:46:36 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/21 13:56:36 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,10 +206,6 @@ int					check_setenv_errors(t_data *data);
 ** check_env_errors.c
 */
 
-int					check_extern_commands(t_data *data, char *args);
-int					check_builtins(char *args);
-int					check_executable(t_data *data, char *args);
-int					check_each_args(t_data *data, char *args);
 int					check_env_errors(t_data *data);
 
 /*
@@ -243,6 +239,8 @@ void				print_no_such_file_or_dir(char *source, char *target);
 ** display_errors_2.c
 */
 
+void				print_numeric_arg_required(char *builtin, char *arg);
+void				print_too_many_args(char *builtin);
 void				print_illegal_option(char *builtin, char option);
 
 /*
