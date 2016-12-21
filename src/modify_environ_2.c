@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 11:23:05 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/21 15:26:19 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/21 15:55:58 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	add_new_var(t_data *modifications, t_data **new)
 	t_data	*tmp_modifs;
 
 	tmp_modifs = modifications;
-	ft_putendl("in add new var");
 	while (tmp_modifs)
 	{
 		list_push_back(new, copy_data(tmp_modifs));
@@ -34,7 +33,8 @@ void	modify_existing_var(t_data **modifications, t_data **new)
 	{
 		if (!*modifications)
 			return ;
-		if (!ft_strcmp((*modifications)->var_name, tmp_new->var_name))
+		if (tmp_new->var_name &&
+			!ft_strcmp((*modifications)->var_name, tmp_new->var_name))
 		{
 			ft_strdel(&tmp_new->var_content);
 			tmp_new->var_content = ft_strdup((*modifications)->var_content);
