@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 11:23:05 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/15 10:51:50 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/21 15:26:19 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	add_new_var(t_data *modifications, t_data **new)
 	t_data	*tmp_modifs;
 
 	tmp_modifs = modifications;
+	ft_putendl("in add new var");
 	while (tmp_modifs)
 	{
 		list_push_back(new, copy_data(tmp_modifs));
@@ -37,11 +38,12 @@ void	modify_existing_var(t_data **modifications, t_data **new)
 		{
 			ft_strdel(&tmp_new->var_content);
 			tmp_new->var_content = ft_strdup((*modifications)->var_content);
-			delete_this_cell(modifications);
 			return ;
 		}
 		tmp_new = tmp_new->next;
 	}
+	list_push_back(new, copy_data(*modifications));
+	return ;
 }
 
 void	modify_specific_variables(t_data **new, t_data **modifications)
@@ -52,7 +54,7 @@ void	modify_specific_variables(t_data **new, t_data **modifications)
 	while (tmp_modifs)
 	{
 		modify_existing_var(&tmp_modifs, new);
-		if (tmp_modifs && tmp_modifs->next)
+		if (tmp_modifs)
 			tmp_modifs = tmp_modifs->next;
 		else
 			break ;
@@ -60,7 +62,6 @@ void	modify_specific_variables(t_data **new, t_data **modifications)
 	if (tmp_modifs)
 		while (tmp_modifs->prev)
 			tmp_modifs = tmp_modifs->prev;
-	*modifications = tmp_modifs;
 }
 
 void	add_var_to_list(t_data **modifications, char *env)

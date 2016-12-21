@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 17:46:33 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/21 11:26:07 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/21 14:00:58 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static int		check_each_args(t_data *data, char *args)
 	return (2);
 }
 
-int		check_env_errors(t_data *data)
+int				check_env_errors(t_data *data)
 {
 	int		i;
 	int		ret;
