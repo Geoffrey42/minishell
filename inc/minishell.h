@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/20 20:28:46 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/21 10:00:58 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct		s_data
 	char			*var_name;
 	char			*var_content;
 	char			**args;
-	int				visible;
 	int				ac;
 	struct s_data	*prev;
 	struct s_data	*next;
