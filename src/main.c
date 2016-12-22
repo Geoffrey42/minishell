@@ -14,9 +14,8 @@
 
 void	mute_compilator_flags(int ac, char **av)
 {
-	if (av)
-		av = NULL;
-	ac = 0;
+	(void)ac;
+	(void)av;
 }
 
 int		main(int ac, char **av, char **env)
@@ -27,5 +26,6 @@ int		main(int ac, char **av, char **env)
 	mute_compilator_flags(ac, av);
 	minishell(data);
 	delete_list(&data);
+	data = create_env_list(env);
 	return (0);
 }

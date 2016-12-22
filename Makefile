@@ -38,7 +38,7 @@ SRC= src/main.c \
 	 src/epur_str_1.c \
 	 src/epur_str_2.c \
 	 src/minishell.c
-CC= clang
+CC= gcc
 CFLAGS= -Wall -Werror -Wextra -g
 INC= inc
 OBJ= $(SRC:.c=.o)

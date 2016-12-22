@@ -19,16 +19,20 @@ void	list_push_back(t_data **list, t_data *new)
 	tmp = NULL;
 	if (!*list)
 		*list = new;
-	if (!(*list)->var_name)
+	else if (!(*list)->var_name)
 	{
 		delete_list(list);
 		*list = new;
 	}
-	else
+	else if (*list && (*list)->var_name)
 	{
 		tmp = *list;
 		while (tmp->next)
+		{
+			//ft_putstr("\t\ttmp : ");
+			//ft_putendl(tmp->var_name);
 			tmp = tmp->next;
+		}
 		tmp->next = new;
 		new->prev = tmp;
 	}

@@ -68,7 +68,7 @@ char	*get_path(t_data *data)
 
 	while (data)
 	{
-		if (ft_strstr(data->var_name, "PATH"))
+		if (!ft_strcmp(data->var_name, "PATH"))
 		{
 			path = ft_strdup(data->var_content);
 			return (path);
