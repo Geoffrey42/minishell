@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/26 22:15:00 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/26 22:54:13 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ int					create_and_execute_new_process(char *file, t_data *data);
 */
 
 void				list_push_back(t_data **list, t_data *new);
+void				re_init_list(t_data **data);
 t_data				*create_elem(void);
 t_data				*create_env_list(char **env);
 size_t				list_size(t_data *data);
