@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 21:20:10 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/19 13:55:03 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/21 17:41:43 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	add_var_directly(t_data **data, char *var)
 	tmp = *data;
 	name = extract_name(var);
 	value = extract_content(var);
-	while (tmp)
+	while (tmp && tmp->var_name)
 	{
 		if (!(ft_strcmp(tmp->var_name, name)))
 		{

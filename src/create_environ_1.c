@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_functions.c                                   :+:      :+:    :+:   */
+/*   create_environ_1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 10:18:28 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/20 20:23:00 by ggane            ###   ########.fr       */
+/*   Created: 2016/12/26 19:11:14 by ggane             #+#    #+#             */
+/*   Updated: 2016/12/26 22:13:41 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,12 @@ void			list_push_back(t_data **list, t_data *new)
 	tmp = NULL;
 	if (!*list)
 		*list = new;
-	else
+	else if (!(*list)->var_name)
+	{
+		delete_list(list);
+		*list = new;
+	}
+	else if (*list && (*list)->var_name)
 	{
 		tmp = *list;
 		while (tmp->next)

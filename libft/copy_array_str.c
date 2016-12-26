@@ -48,9 +48,7 @@ char			**copy_array_str(char **origin)
 {
 	char	**copy;
 	size_t	size;
-	int		i;
 
-	i = 0;
 	if (!origin)
 		return (NULL);
 	size = get_origin_size(origin);

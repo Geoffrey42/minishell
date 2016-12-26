@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:39:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/19 15:38:09 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/26 22:12:41 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	mute_compilator_flags(int ac, char **av)
 {
-	if (av)
-		av = NULL;
-	ac = 0;
+	(void)ac;
+	(void)av;
 }
 
 int		main(int ac, char **av, char **env)

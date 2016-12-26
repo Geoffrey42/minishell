@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:26:16 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/16 11:30:08 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/26 21:51:57 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,18 @@ void	modify_temporary_env(t_data *data, t_data **new_env)
 	get_args(new_env, data);
 }
 
-int		ft_env(t_data *data)
+int		ft_env(t_data **data)
 {
 	t_data	*new_env;
 	void	(*display)(t_data *);
 
 	new_env = NULL;
 	display = &display_env_variables;
-	if (data->ac == 1)
-		display_env_list(data, display);
-	else if (data->ac > 1 && check_env_errors(data))
+	if ((*data)->ac == 1)
+		display_env_list(*data, display);
+	else if ((*data)->ac > 1 && check_env_errors(*data))
 	{
-		modify_temporary_env(data, &new_env);
+		modify_temporary_env(*data, &new_env);
 		if (new_env->args)
 			execute_command(new_env);
 		delete_list(&new_env);

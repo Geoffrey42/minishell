@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:24:16 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/16 12:09:21 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/26 21:54:21 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ void	search_var_to_delete(t_data **data, t_data *modifications)
 	}
 }
 
-int		ft_unsetenv(t_data *data)
+int		ft_unsetenv(t_data **data)
 {
 	t_data	*modifications;
 	int		(*not_check)(char *);
 
 	not_check = &no_check;
-	modifications = get_modifications(data->args + 1, not_check);
-	search_var_to_delete(&data, modifications);
+	modifications = get_modifications((*data)->args + 1, not_check);
+	search_var_to_delete(data, modifications);
 	delete_list(&modifications);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 11:22:54 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/15 21:20:27 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/26 21:48:36 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_data	*copy_data(t_data *data)
 	copy = create_elem();
 	copy->var_name = ft_strdup(data->var_name);
 	copy->var_content = ft_strdup(data->var_content);
+	copy->args = copy_array_str(data->args);
 	return (copy);
 }
 
@@ -35,20 +36,27 @@ t_data	*copy_env(t_data *data)
 	return (new_env);
 }
 
+int		env_i_flag_spotted(t_data *data)
+{
+	if (!ft_strcmp(data->args[0], "env") && !ft_strcmp(data->args[1], "-i"))
+		return (1);
+	return (0);
+}
+
 t_data	*create_modified_env(t_data *data)
 {
 	t_data	*new_env;
 	t_data	*modifications;
 	int		(*check)(char *);
 
-	new_env = copy_env(data);
+	if (env_i_flag_spotted(data))
+		new_env = create_elem();
+	else
+		new_env = copy_env(data);
 	check = &check_dash_and_equal;
 	modifications = get_modifications(data->args, check);
 	modify_specific_variables(&new_env, &modifications);
 	if (modifications)
-	{
-		add_new_var(modifications, &new_env);
 		delete_list(&modifications);
-	}
 	return (new_env);
 }

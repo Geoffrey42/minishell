@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:59:44 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/19 15:38:03 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/26 22:12:27 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	**create_builtins_array(void)
 
 int		execute_command(t_data *data)
 {
-	static int	(*execute_builtin[])(t_data *) = {BUILTINS};
+	static int	(*execute_builtin[])(t_data **) = {BUILTINS};
 	char		**builtins;
 	int			i;
 
@@ -32,7 +32,7 @@ int		execute_command(t_data *data)
 		if (!(ft_strcmp(data->args[0], builtins[i])))
 		{
 			erase_char_array(&builtins);
-			return (execute_builtin[i](data));
+			return (execute_builtin[i](&data));
 		}
 		i++;
 	}
