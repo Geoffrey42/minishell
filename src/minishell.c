@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:59:44 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/26 23:14:31 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/27 00:28:42 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,25 @@ int		execute_command(t_data *data)
 	int			i;
 
 	i = 0;
+	ft_putendl("\tstart execute_command()");
 	if (!data->args[0])
 		return (-1);
 	builtins = create_builtins_array();
+	ft_putendl("\tcreate_builtins_array() ok");
 	while (builtins[i])
 	{
+		ft_putendl("\t - builtins non null");
 		if (!(ft_strcmp(data->args[0], builtins[i])))
 		{
+			ft_putendl("\t - Match !");
 			erase_char_array(&builtins);
 			return (execute_builtin[i](&data));
 		}
 		i++;
 	}
+	ft_putendl("\twhile () ok");
 	erase_char_array(&builtins);
+	ft_putendl("\tend execute_command()");
 	return (execute_extern_commands(data));
 }
 
@@ -72,10 +78,11 @@ int		minishell(t_data *data)
 		data->ac = args_number(data->args);
 		ft_strdel(&line);
 		ft_strdel(&epur);
+		ft_putendl("ft_strdel() ok");
 		execute_command(data);
 		ft_putendl("execute_command() ok");
-		erase_char_array(&data->args);
-		ft_putendl("erase_char_array() ok");
+		//erase_char_array(&data->args);
+		//ft_putendl("erase_char_array() ok");
 	}
 	return (0);
 }

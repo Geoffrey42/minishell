@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:24:16 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/26 23:36:43 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/26 23:52:47 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	delete_var(t_data **data, t_data *modif)
 
 	ft_putendl("\t\tstart delete_var()");
 	tmp = *data;
+	ft_putendl("modif :");
+	print_list(modif);
 	while (tmp)
 	{
 		ft_putendl("\t\t - tmp non nulle");
