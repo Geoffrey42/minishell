@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2016/12/19 09:20:32 by ggane            ###   ########.fr        #
+#    Updated: 2016/12/26 19:16:43 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,14 +27,14 @@ SRC= src/main.c \
 	 src/check_setenv_errors.c \
 	 src/display_errors_1.c \
 	 src/display_errors_2.c \
-	 src/create_environ.c \
+	 src/create_environ_1.c \
+	 src/create_environ_2.c \
 	 src/modify_environ_1.c \
 	 src/modify_environ_2.c \
 	 src/modify_environ_3.c \
 	 src/extern_command.c \
 	 src/path.c \
 	 src/process.c \
-	 src/list_functions.c \
 	 src/epur_str_1.c \
 	 src/epur_str_2.c \
 	 src/minishell.c

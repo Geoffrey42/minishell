@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 11:22:54 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/21 15:55:15 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/26 21:48:36 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_data	*copy_data(t_data *data)
 	copy = create_elem();
 	copy->var_name = ft_strdup(data->var_name);
 	copy->var_content = ft_strdup(data->var_content);
+	copy->args = copy_array_str(data->args);
 	return (copy);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:22:32 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/15 11:31:24 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/26 21:47:35 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ void	print_message(t_data *data, char *arg)
 		print_env_var(data, arg);
 }
 
-int		ft_echo(t_data *data)
+int		ft_echo(t_data **data)
 {
 	int		i;
 
 	i = 1;
-	while (data->args[i])
+	while ((*data)->args[i])
 	{
-		print_message(data, data->args[i]);
-		if (data->args[i])
+		print_message(*data, (*data)->args[i]);
+		if ((*data)->args[i])
 			ft_putchar(' ');
 		i++;
 	}

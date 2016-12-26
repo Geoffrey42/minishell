@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 11:23:05 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/21 15:55:58 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/26 21:39:59 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,13 @@ void	modify_existing_var(t_data **modifications, t_data **new)
 		}
 		tmp_new = tmp_new->next;
 	}
-	list_push_back(new, copy_data(*modifications));
+	if ((*new)->var_name)
+		list_push_back(new, copy_data(*modifications));
+	else
+	{
+		(*new)->var_name = ft_strdup((*modifications)->var_name);
+		(*new)->var_content = ft_strdup((*modifications)->var_content);
+	}
 	return ;
 }
 

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 09:54:36 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/21 17:57:44 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/26 21:45:56 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,28 +67,27 @@ char	*search_var(t_data *data, char *to_search)
 	return (found);
 }
 
-int		ft_cd(t_data *data)
+int		ft_cd(t_data **data)
 {
 	char	*dir;
 
 	dir = NULL;
-	if (data->ac > 2)
+	if ((*data)->ac > 2)
 	{
 		ft_putstr_fd("cd: string not in pwd: ", 2);
-		ft_putendl_fd(data->args[2], 2);
+		ft_putendl_fd((*data)->args[2], 2);
 		return (0);
 	}
-	if (data->ac == 1 || !ft_strcmp(data->args[1], "~"))
+	if ((*data)->ac == 1 || !ft_strcmp((*data)->args[1], "~"))
 	{
-		check_cd_access(&data, search_var(data, "HOME"));
+		check_cd_access(data, search_var(*data, "HOME"));
 		return (0);
 	}
-	if (!ft_strcmp(data->args[1], "-"))
-		dir = go_to_previous_dir(data);
+	if (!ft_strcmp((*data)->args[1], "-"))
+		dir = go_to_previous_dir(*data);
 	else
-		dir = data->args[1];
+		dir = (*data)->args[1];
 	if (dir)
-		check_cd_access(&data, dir);
-	print_list(data);
+		check_cd_access(data, dir);
 	return (0);
 }

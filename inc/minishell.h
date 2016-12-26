@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:40:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/21 17:40:17 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/26 21:43:08 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int					change_directory(char *dir, t_data **data);
 int					check_cd_access(t_data **data, char *dir);
 char				*go_to_previous_dir(t_data *data);
 char				*search_var(t_data *data, char *to_search);
-int					ft_cd(t_data *data);
+int					ft_cd(t_data **data);
 
 /*
 ** ft_echo.c
@@ -48,13 +48,13 @@ int					ft_cd(t_data *data);
 
 void				print_env_var(t_data *data, char *arg);
 void				print_message(t_data *data, char *arg);
-int					ft_echo(t_data *data);
+int					ft_echo(t_data **data);
 
 /*
 ** ft_exit.c
 */
 
-int					ft_exit(t_data *data);
+int					ft_exit(t_data **data);
 
 /*
 ** ft_env.c
@@ -63,13 +63,13 @@ int					ft_exit(t_data *data);
 char				**get_utility(char **args);
 void				get_args(t_data **new_env, t_data *data);
 void				modify_temporary_env(t_data *data, t_data **new_env);
-int					ft_env(t_data *data);
+int					ft_env(t_data **data);
 
 /*
 ** ft_setenv.c
 */
 
-int					ft_setenv(t_data *data);
+int					ft_setenv(t_data **data);
 
 /*
 ** ft_unsetenv.c
@@ -77,7 +77,7 @@ int					ft_setenv(t_data *data);
 
 void				delete_var(t_data **data, t_data *modif);
 void				search_var_to_delete(t_data **data, t_data *modifications);
-int					ft_unsetenv(t_data *data);
+int					ft_unsetenv(t_data **data);
 
 /*
 ** function_pointers.c
@@ -123,15 +123,6 @@ int					space_tab(char c);
 size_t				get_words_nb(char *raw);
 
 /*
-** list_functions.c
-*/
-
-void				list_push_back(t_data **list, t_data *new);
-t_data				*create_elem(void);
-t_data				*create_env_list(char **env);
-size_t				list_size(t_data *data);
-
-/*
 ** extern_command.c
 */
 
@@ -158,7 +149,16 @@ void				execute_file(t_data *data, char *file);
 int					create_and_execute_new_process(char *file, t_data *data);
 
 /*
-** create_environ.c
+** create_environ_1.c
+*/
+
+void				list_push_back(t_data **list, t_data *new);
+t_data				*create_elem(void);
+t_data				*create_env_list(char **env);
+size_t				list_size(t_data *data);
+
+/*
+** create_environ_2.c
 */
 
 int					check_if_environ_is_empty(t_data *data);
@@ -174,6 +174,7 @@ char				**create_env_array(t_data *data);
 t_data				*copy_data(t_data *data);
 t_data				*copy_env(t_data *data);
 t_data				*create_modified_env(t_data *data);
+void				copy_elem(t_data **dest, t_data *src);
 
 /*
 ** modify_environ_2.c
