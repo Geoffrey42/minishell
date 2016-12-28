@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 16:05:33 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/28 09:32:48 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/28 09:55:25 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ void	delete_list(t_data **list)
 		{
 			tmp = del->next;
 			delete_data(&del);
-			ft_memdel((void **)&del);
+			free(del);
+			del = NULL;
 			del = tmp;
 		}
 		*list = NULL;
