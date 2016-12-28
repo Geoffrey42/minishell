@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/26 19:11:14 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/26 22:56:52 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/28 09:45:02 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,6 @@ void			list_push_back(t_data **list, t_data *new)
 		tmp->next = new;
 		new->prev = tmp;
 	}
-}
-
-void	re_init_list(t_data **data)
-{
-	ft_putendl("\tstart re_init_list()");
-	(*data)->var_name = NULL;
-	(*data)->var_content = NULL;
-	(*data)->args = NULL;
-	(*data)->ac = 0;
-	(*data)->next = NULL;
-	(*data)->prev = NULL;
 }
 
 t_data	*create_elem(void)
