@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 11:23:05 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/27 00:10:00 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/27 09:19:26 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,22 +93,11 @@ t_data	*get_modifications(char **env_args, int (*check)(char *))
 
 	modifications = NULL;
 	i = 0;
-	ft_putendl("\tstart get_modifications()");
 	while (env_args[i])
 	{
-		ft_putstr("\t - env_args[");
-		ft_putnbr(i);
-		ft_putstr("] : [");
-		ft_putstr(env_args[i]);
-		ft_putendl("] non null");
 		if (check(env_args[i]))
-		{
-			ft_putendl("\t - check() ok");
 			add_var_to_list(&modifications, env_args[i]);
-			ft_putendl("\t - add_var_to_list() ok");
-		}
 		i++;
 	}
-	ft_putendl("\tend get_modifications()");
 	return (modifications);
 }

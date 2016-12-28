@@ -6,46 +6,45 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 10:56:00 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/26 23:49:46 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/27 15:32:58 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../inc/minishell.h" //to_delete
-
+#include "../inc/minishell.h"
+/*
 void	erase_char_array(char ***array)
 {
 	char	**tmp;
+	char	**del;
 
-	ft_putendl("\tstart erase_char_array()");
 	tmp = NULL;
-	if (*array)
-	{
-		ft_putendl("\t*array");
-		print_char_array(*array);
-	}
-	ft_putendl("\ttmp = *array ok");
 	if (!*array)
-	{
-		ft_putendl("\tarray est nul");
 		return ;
-	}
 	tmp = *array;
-	ft_putendl("\tif ok");
 	while (*tmp)
 	{
-		ft_putendl("\t - tmp n'est pas nul");
 		free(*tmp);
-		ft_putendl("\t - free(*tmp) ok");
 		*tmp = NULL;
-		ft_putendl("\t - *tmp = NULL ok");
+		del = tmp;
+		ft_strdel(&del);
 		tmp++;
-		ft_putendl("\t - tmp++ ok");
 	}
-	ft_putendl("\twhile () ok");
 	free(*array);
-	ft_putendl("\tfree(*array) ok");
 	*array = NULL;
-	ft_putendl("\t*array = NULL ok");
-	ft_putendl("\tend erase_char_array()");
+}*/
+
+void	erase_char_array(char **array)
+{
+	int		i;
+
+	i = 0;
+	if (!array)
+		return ;
+	while (array[i])
+	{
+		ft_strdel(&array[i]);
+		i++;
+	}
+	ft_memdel((void **)array);
 }

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 22:10:52 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/02 16:02:43 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/27 15:30:58 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void	execute_file(t_data *data, char *file)
 	env = create_env_array(data);
 	if (execve(file, data->args, env) == -1)
 	{
-		erase_char_array(&env);
+		erase_char_array(env);
 		return ;
 	}
-	erase_char_array(&env);
+	erase_char_array(env);
 }
 
 int		create_and_execute_new_process(char *file, t_data *data)

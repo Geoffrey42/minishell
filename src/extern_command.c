@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:43:23 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/19 15:39:32 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/27 15:25:49 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,16 @@ int		search_command_in_path(t_data *data, char *path)
 	if (!(path_command = get_command(data->args[0], directories)))
 	{
 		ft_strdel(&path_command);
-		erase_char_array(&directories);
+		erase_char_array(directories);
 		return (1);
 	}
 	if (create_and_execute_new_process(path_command, data))
 	{
 		ft_strdel(&path_command);
-		erase_char_array(&directories);
+		erase_char_array(directories);
 		return (1);
 	}
 	ft_strdel(&path_command);
-	erase_char_array(&directories);
+	erase_char_array(directories);
 	return (0);
 }

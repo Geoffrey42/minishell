@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 17:46:33 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/21 14:00:58 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/27 15:01:35 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int		check_extern_commands(t_data *data, char *args)
 		status = 1;
 	ft_strdel(&path);
 	ft_strdel(&command);
-	erase_char_array(&directories);
+	erase_char_array(directories);
 	return (status);
 }
 
@@ -49,12 +49,12 @@ static int		check_builtins(char *args)
 	{
 		if (!(ft_strcmp(args, builtins[i])))
 		{
-			erase_char_array(&builtins);
+			erase_char_array(builtins);
 			return (0);
 		}
 		i++;
 	}
-	erase_char_array(&builtins);
+	erase_char_array(builtins);
 	return (1);
 }
 

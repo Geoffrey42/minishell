@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 16:05:33 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/16 12:13:32 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/28 09:32:48 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ void	delete_data(t_data **del)
 {
 	ft_strdel(&(*del)->var_name);
 	ft_strdel(&(*del)->var_content);
-	if ((*del)->args)
-		erase_char_array(&(*del)->args);
+	erase_char_array((*del)->args);
 }
 
 void	delete_this_cell(t_data **list)
@@ -61,7 +60,7 @@ void	delete_list(t_data **list)
 		{
 			tmp = del->next;
 			delete_data(&del);
-			free(del);
+			ft_memdel((void **)&del);
 			del = tmp;
 		}
 		*list = NULL;

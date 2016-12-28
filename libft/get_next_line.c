@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:20:54 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/17 23:11:28 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/27 12:39:51 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static char		*cut_previous_content(char *str, char *prev)
 
 	del = str;
 	str = ft_strsub(str, ft_strlen(prev) + 1, ft_strlen(str) - ft_strlen(prev));
-	ft_memdel((void **)&del);
+	ft_strdel(&del);
 	return (str);
 }
 
@@ -84,7 +84,8 @@ int				get_next_line(const int fd, char **line)
 	*line = ft_strdup(prev);
 	if (ft_strlen(gnl.stock) == 0 && ft_strlen(prev) == 0)
 	{
-		free(prev);
+		ft_strdel(&prev);
+		ft_strdel(&gnl.stock);
 		return (0);
 	}
 	gnl.stock = cut_previous_content(gnl.stock, prev);
