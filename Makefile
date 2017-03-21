@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2016/12/27 12:02:51 by ggane            ###   ########.fr        #
+#    Updated: 2016/12/28 10:10:59 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ SRC= src/main.c \
 	 src/epur_str_2.c \
 	 src/minishell.c
 CC= gcc
-CFLAGS= -Wall -Werror -Wextra -g
+CFLAGS= -Wall -Werror -Wextra
 INC= inc
 OBJ= $(SRC:.c=.o)
 

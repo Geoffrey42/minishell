@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 10:56:00 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/28 09:59:48 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/28 10:13:13 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void	erase_char_array(char **array)
 		ft_strdel(&array[i]);
 		i++;
 	}
-	ft_memdel((void **)array);
+	free(array);
+	array = NULL;
 }
